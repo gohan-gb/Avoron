@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica.ttf') format(ttf);
+  font-weight: normal;
+  font-style: normal
+}
+@font-face {
+  font-family: 'Fraunceus';
+  src: url('/fonts/frauncessoftwonkopszwght.ttf') format(ttf);
+  font-weight: normal;
+  font-style: normal
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,3 +20,35 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* background */
+
+@layer base {
+  body {
+    @apply bg-background
+  }
+}
+
+/* headings */
+.h1{
+  @apply font-fraunceus leading-[128px] text-[128px]
+}
+.h2{
+  @apply font-fraunceus text-8xl
+}
+.h3{
+  @apply font-fraunceus text-6xl
+}
+.h4{
+  @apply font-fraunceus text-4xl
+}
+
+/* texts */
+.p1{
+  @apply text-2xl
+}
+.p2{
+  @apply text-xl
+}
+
+/* default or no size declaration will be considered as smallest text */

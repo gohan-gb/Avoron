@@ -1,11 +1,13 @@
 import MarginWrapper from "./common/MarginWrapper"
+import Navbar from "./common/Navbar"
 
 
 function App() {
 
   return (
     <>
-     <MarginWrapper>
+     <Navbar/>
+     
      <h1 className="text-white text-center bg-black ">hello world</h1>
      <h1 className="text-white font-fraunceus leading-[128px] text-[128px] text-center bg-black ">Hello world</h1>
      <h1 className="text-white font-fraunceus text-8xl text-center bg-black ">Hello world</h1> 
@@ -16,7 +18,7 @@ function App() {
      <h1 className="text-white text-xl text-center bg-black ">Hello world</h1> 
      <h1 className="text-white text-center bg-black ">Hello world</h1> 
      
-     </MarginWrapper>
+     
     </>
   )
 }

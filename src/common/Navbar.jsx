@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MarginWrapper from "./MarginWrapper";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [hamburger, setHamburger] = useState(true);
@@ -15,15 +16,15 @@ const Navbar = () => {
     <nav className="bg-background z-10 fixed font-fraunceus text-2xl w-full">
       <MarginWrapper>
         <div className="flex justify-between items-center">
-          <img
+          <Link to={'/'}><img
             src="/assets/avoron_logo_website.svg"
             className="w-24 "
             alt="logo"
-          />
+          /></Link>
           <ul className="sm:flex justify-between items-center gap-10 hidden">
-            <li>Shop</li>
-            <li>About Us</li>
-            <li>Contact</li>
+            <Link to={'products'}><li>Shop</li></Link>
+            <Link to={'about'}><li>About Us</li></Link>
+            <Link to={'contact'}><li>Contact</li></Link>
           </ul>
           <div
             onClick={handleNavbar}
@@ -42,10 +43,10 @@ const Navbar = () => {
         <MarginWrapper>
           <div className="flex justify-between mt-8">
             <ul onClick={handleNavbar} className="h3 flex flex-col gap-6 mt-36 ">
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Shop</li>
-              <li className="cursor-pointer">About Us</li>
-              <li className="cursor-pointer">Contact</li>
+              <Link to={'/'}><li className="cursor-pointer">Home</li></Link>
+              <Link to={'products'}><li className="cursor-pointer">Shop</li></Link>
+              <Link to={'about'}><li className="cursor-pointer">About Us</li></Link>
+              <Link to={'contact'}><li className="cursor-pointer">Contact</li></Link>
             </ul>
             <div className="cursor-pointer">
               <RxCross1 size={"40px"} onClick={handleNavbar} />

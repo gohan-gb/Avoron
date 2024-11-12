@@ -1,5 +1,6 @@
 import React from 'react'
 import MarginWrapper from './MarginWrapper'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -17,24 +18,25 @@ const Footer = () => {
         </div>
         <div className='flex justify-between items-start sm:gap-24 sm:w-auto w-full mb-8'>
         <ul className='flex flex-col gap-3'>
-          <li>Home</li>
-          <li>Shop All</li>
-          <li>Our mission</li>
-          <li>Contact</li>
-          <li>Return Policy</li>
+          <Link to={'/'}><li className='cursor-pointer'>Home</li></Link>
+          <Link to={'/products'}><li className='cursor-pointer'>Shop All</li></Link>
+          <Link to={'/about'}><li className='cursor-pointer'>Our mission</li></Link>
+          <Link to={'/contact'}><li className='cursor-pointer'>Contact</li></Link>
+          <Link to={'/'}><li className='cursor-pointer'>Return Policy</li></Link>
+          
         </ul>
         <ul className='flex flex-col gap-3'>
-          <li>Dress</li>
-          <li>Hair</li>
-          <li>Crowns</li>
-          <li>Sale</li>
+          <li className='cursor-pointer'>Dress</li>
+          <li className='cursor-pointer'>Hair</li>
+          <li className='cursor-pointer'>Crowns</li>
+          <li className='cursor-pointer'>Sale</li>
         </ul>
         </div>
         <div className='block sm:hidden'>
           <ul className='flex flex-col gap-3 underline'>
-            <li>Facebook</li>
-            <li>Instagram</li>
-            <li>YouTube</li>
+            <li className='cursor-pointer'>Facebook</li>
+            <li className='cursor-pointer'>Instagram</li>
+            <li className='cursor-pointer'>YouTube</li>
           </ul>
         </div>
       </div>
@@ -49,9 +51,9 @@ const Footer = () => {
         </div>
         <div className='hidden sm:block'>
           <ul className='flex flex-row gap-3 underline'>
-            <li>Facebook</li>
-            <li>Instagram</li>
-            <li>YouTube</li>
+            <li className='cursor-pointer'>Facebook</li>
+            <li className='cursor-pointer'>Instagram</li>
+            <li className='cursor-pointer'>YouTube</li>
           </ul>
         </div>
         </div>

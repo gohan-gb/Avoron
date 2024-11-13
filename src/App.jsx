@@ -1,6 +1,7 @@
 import MarginWrapper from "./common/MarginWrapper"
 import { Route, Routes } from 'react-router-dom'
 import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
+import Home from '../src/pages/Home/Home'
 
 
 function App() {
@@ -20,8 +21,10 @@ function App() {
      
      </MarginWrapper> */}
 
+      
      <Routes>
         <Route path="/admin-panel" element={<Adminpanel />} />
+        <Route path="/home" element={<Home />} />
      </Routes>
     </>
   )

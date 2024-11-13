@@ -8,6 +8,7 @@ import About from '../src/pages/About/About'
 import Contact from '../src/pages/Contact/Contact'
 import Products from '../src/pages/Products/Products'
 import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
+import Home from '../src/pages/Home/Home'
 
 
 function App() {

@@ -1,5 +1,8 @@
 import Footer from "./common/Footer"
 import MarginWrapper from "./common/MarginWrapper"
+<<<<<<< HEAD
+import Home from "./pages/Home/Home"
+=======
 
 import Navbar from "./common/Navbar"
 import {Route, Routes} from 'react-router-dom'
@@ -11,10 +14,26 @@ import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
 import Home from '../src/pages/Home/Home'
 
 
+>>>>>>> main
 function App() {
 
   return (
     <>
+<<<<<<< HEAD
+    <Home />
+     <MarginWrapper>
+     {/* <h1 className="text-white text-center bg-black ">hello world</h1>
+     <h1 className="text-white font-fraunceus leading-[128px] text-[128px] text-center bg-black ">Hello world</h1>
+     <h1 className="text-white font-fraunceus text-8xl text-center bg-black ">Hello world</h1> 
+     <h1 className="text-white font-fraunceus text-6xl text-center bg-black ">Hello world</h1>
+     <h1 className="text-white font-fraunceus text-4xl text-center bg-black ">Hello world</h1>
+
+     <h1 className="text-white text-2xl text-center bg-black ">Hello world</h1> 
+     <h1 className="text-white text-xl text-center bg-black ">Hello world</h1> 
+     <h1 className="text-white text-center bg-black ">Hello world</h1> 
+      */}
+     </MarginWrapper>
+=======
      <Navbar/>
      <main>
       <Routes>
@@ -26,6 +45,7 @@ function App() {
       </Routes>
      </main>
      <Footer />
+>>>>>>> main
     </>
   )
 }

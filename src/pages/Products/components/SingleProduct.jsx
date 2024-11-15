@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MarginWrapper from "../../../common/MarginWrapper";
+import Button from "../../../components/Button";
 
 const SingleProduct = () => {
   const [activeIndex, setActiveIndex] = useState(0); // Open first accordion by default
@@ -51,7 +52,9 @@ const SingleProduct = () => {
                 Quantity
               </label>
               <input className="mb-8 w-16 h-12 p-2 border text-dark" type="number" defaultValue={quantity}/>
-              <button className="mb-8 w-60 bg-yellow rounded-full"> Order via Whatsapp </button>
+              <div className="mb-8"> 
+                <Button text="Order via Whatsapp" />
+              </div>
 
               <div className="flex flex-col space-y-2 p-4">
       {/* Product Info Accordion */}

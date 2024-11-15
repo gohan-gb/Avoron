@@ -1,4 +1,4 @@
-export const productData = [
+const productData = [
     {   
         id: 1,
         title: 'vibgyor umbrella',
@@ -123,3 +123,5 @@ export const productData = [
         subCategory: 'girls'
     },
 ]
+
+export default productData;

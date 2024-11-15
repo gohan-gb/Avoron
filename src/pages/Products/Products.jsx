@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import ProductCard from "../../components/ProductCard";
-import { productData } from "../../data/data";
+import productData from "../../data/productData"
 import MarginWrapper from "../../common/MarginWrapper";
 import { RxCross1 } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const Products = () => {
 
@@ -79,9 +80,11 @@ const Products = () => {
               </p>
             </div>
 
+            
             <div className=" flex flex-wrap gap-4 justify-center items-start ">
               {productData.map(function (item) {
                 return (
+                  <Link to={`/products/${item.id}`}>
                   <div key={item.id}>
                     <ProductCard
                       image={item.images[0]}
@@ -89,9 +92,12 @@ const Products = () => {
                       price={item.price}
                     />
                   </div>
+                  </Link>
                 );
               })}
             </div>
+            
+            
           </div>
         </div>
       </MarginWrapper>

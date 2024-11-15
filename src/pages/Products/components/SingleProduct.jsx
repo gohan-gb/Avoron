@@ -31,7 +31,7 @@ const SingleProduct = () => {
                 className="w-[520px] mb-8"
                 alt="product"
               />
-              <p className="w-[520px] lg:block hidden text-dark">
+              <p className="sm:w-[520px] w-80 lg:block hidden text-dark">
                 {" "}
                 I'm a product description. I'm a great place to add more details
                 about your product such as sizing, material, care instructions
@@ -40,7 +40,7 @@ const SingleProduct = () => {
             </div>
             <div className="flex flex-col justify-start">
               <h2 className="h4 text-dark mb-8"> Product Name </h2>
-              <p className="w-[520px] mb-8 block lg:hidden text-dark">
+              <p className="sm:w-[520px] w-80 mb-8 block lg:hidden text-dark">
                 {" "}
                 I'm a product description. I'm a great place to add more details
                 about your product such as sizing, material, care instructions

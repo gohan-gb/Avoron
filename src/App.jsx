@@ -8,13 +8,13 @@ import About from '../src/pages/About/About'
 import Contact from '../src/pages/Contact/Contact'
 import Products from '../src/pages/Products/Products'
 import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
-
+import SingleProduct from "./pages/Products/components/SingleProduct"
 
 function App() {
 
   return (
     <>
-     <Navbar/>
+     <Navbar />
      <main>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,6 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin-panel" element={<Adminpanel />} />
+        <Route path="/single-product" element={<SingleProduct />} />
       </Routes>
      </main>
      <Footer />

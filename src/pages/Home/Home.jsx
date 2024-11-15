@@ -1,13 +1,9 @@
 import React from 'react'
-<<<<<<< HEAD
 import HeroSection from './HeroSection'
 import MarginWrapper from '../../common/MarginWrapper'
 import NewArrivals from './NewArrivals'
 import ExploreCollection from './ExploreCollection'
-
-=======
-import FeaturedProduct from './FeaturedProduct'
->>>>>>> main
+import FeatureProduct from './FeaturedProduct'
 
 const Home = () => {
   return (
@@ -17,6 +13,7 @@ const Home = () => {
       <NewArrivals />
       <ExploreCollection/>
      </MarginWrapper>
+     <FeatureProduct />
     </div>
   )
 }

@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-background z-10 fixed font-fraunceus text-2xl w-full">
+    <nav className="bg-background z-10 fixed top-0 font-fraunceus text-2xl w-full">
       <MarginWrapper>
         <div className="flex justify-between items-center">
           <Link to={'/'}><img

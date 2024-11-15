@@ -1,6 +1,7 @@
 import Footer from "./common/Footer"
 import MarginWrapper from "./common/MarginWrapper"
 
+
 import Navbar from "./common/Navbar"
 import {Route, Routes} from 'react-router-dom'
 import Home from '../src/pages/Home/Home'
@@ -10,11 +11,12 @@ import Products from '../src/pages/Products/Products'
 import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
 import SingleProduct from "./pages/Products/components/SingleProduct"
 
+
 function App() {
 
   return (
     <>
-     <Navbar />
+     <Navbar/>
      <main>
       <Routes>
         <Route path="/" element={<Home />} />

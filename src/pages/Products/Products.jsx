@@ -1,14 +1,77 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ProductCard from "../../components/ProductCard";
-import productData from "../../data/productData"
 import MarginWrapper from "../../common/MarginWrapper";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import config from '../../Backend/Appwrite/config';
+import {useDispatch} from 'react-redux'
+import {productFetch} from "../../Backend/Redux/ProductSlice"
+import { useLocation } from 'react-router-dom';
 
 const Products = () => {
 
+    // const [categoryName, setCategoryName] = useState(" ")
+    const [categories, setCategories] = useState([]);
     const [menu, setMenu] = useState(false);
+    const dispatch = useDispatch()
+    const location = useLocation();
+    const [categoryName, setCategoryName] = useState(location.state?.categoryName || "All Products");
+
+    const allcategory = async () => {
+      try {
+        const categories = await config.getAllCategories()
+        setCategories(categories);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   
+    useEffect(() => {
+      const fetchCategories = async () => {
+        await allcategory();
+      };
+      fetchCategories();
+    }, []);
+    
+    const getProductsforthiscategory = async (category, fetchedCategory) => {
+      try {
+        const productsdata = await config.getProducts(category, fetchedCategory)
+        if (productsdata) {
+          dispatch(productFetch(productsdata));
+          setCategoryName(fetchedCategory)
+        } else {
+          console.log(error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    const getAllProducts = async () => {
+      try {
+        const productsdata = await config.getallProducts()
+        if (productsdata) {
+          dispatch(productFetch(productsdata)); 
+          setCategoryName("All Products");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    useEffect(() => {
+      const categoryname = location.state?.categoryName; // Check if category is passed via state
+      if (categoryname) {
+        getProductsforthiscategory("category", categoryname); // Fetch products for the specific category
+      } else {
+        getAllProducts(); // Fetch all products
+      }
+    }, [location.state]); // Re-run effect when location.state changes
+
+    const productDatas = useSelector((state) => state.product.productData);
+    
+    
     const handleMenuBar = () => {
       setMenu(!menu);
     };
@@ -20,11 +83,12 @@ const Products = () => {
           <div className="text-dark w-[25%] hidden sm:block">
             <h3 className="h4 mb-4">Browse by</h3>
             <ul className="flex flex-col justify-start gap-2 mb-20">
-              <li>All Products</li>
-              <li>kids</li>
-              <li>men</li>
-              <li>women</li>
-              <li>handcrafts</li>
+              <li onClick={() => getAllProducts()}>All Products</li>
+              {categories.map((category, index) => (
+                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                  {category}
+                </li>
+              ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
@@ -37,7 +101,7 @@ const Products = () => {
           <div className="w-full sm:w-[75%]">
 
             <div className=" pb-16">
-              <h2 className="h3  pb-4 text-dark text-center sm:text-left">All Products</h2>
+              <h2 className="h3  pb-4 text-dark text-center sm:text-left">{categoryName}</h2>
 
               <h3 onClick={handleMenuBar} className="text-dark text-right p2 underline sm:hidden block cursor-pointer"> Filter & Sort </h3>
 
@@ -52,11 +116,12 @@ const Products = () => {
             <div className="text-dark">
             <h3 className="h4 mb-4">Browse by</h3>
             <ul className="flex flex-col justify-start gap-2 mb-8">
-              <li>All Products</li>
-              <li>kids</li>
-              <li>men</li>
-              <li>women</li>
-              <li>handcrafts</li>
+              <li onClick={() => getAllProducts()}>All Products</li>
+              {categories.map((category, index) => (
+                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                  {category}
+                </li>
+              ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
@@ -82,10 +147,10 @@ const Products = () => {
 
             
             <div className=" flex flex-wrap gap-4 justify-center items-start ">
-              {productData.map(function (item) {
+              {productDatas.map(function (item) {
                 return (
                   <Link to={`/products/${item.id}`}>
-                  <div key={item.id}>
+                  <div>
                     <ProductCard
                       image={item.images[0]}
                       title={item.title}

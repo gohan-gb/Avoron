@@ -5,6 +5,7 @@ import NewArrivals from './NewArrivals'
 import ExploreCollection from './ExploreCollection'
 import FeatureProduct from './FeaturedProduct'
 import Testimonial from './Testimonial'
+import WeekendSale from './WeekendSale'
 
 const Home = () => {
   return (
@@ -15,6 +16,9 @@ const Home = () => {
       <ExploreCollection/>
      </MarginWrapper>
      <FeatureProduct />
+     <MarginWrapper >
+     <WeekendSale />
+     </MarginWrapper>
      <Testimonial/>
     </div>
   )

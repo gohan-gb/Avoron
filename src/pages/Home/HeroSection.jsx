@@ -3,7 +3,7 @@ import Button from '../../components/Button';
 
 const HeroSection = () => {
   return (
-    <div className="relative">
+    <div className="relative pt-24">
       {/* Image Container */}
       <div className="flex items-center justify-center p-2">
         <img

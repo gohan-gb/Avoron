@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer className='bg-yellow  text-dark  '>
-      <div className='w-full  border-dark border-b-[1px] border-solid'>
+      <div className='w-full  border-dark border-b-[1px] border-t-[1px] border-solid'>
       <MarginWrapper>
       <div className=' flex lg:flex-row flex-col lg:justify-between lg:items-center justify-start items-start py-16 px-8'>
         <div>

@@ -45,10 +45,10 @@
 
 /* texts */
 .p1{
-  @apply font-fraunceus text-2xl
+  @apply text-2xl
 }
 .p2{
-  @apply font-fraunceus text-xl
+  @apply text-xl
 }
 
 /* default or no size declaration will be considered as smallest text */

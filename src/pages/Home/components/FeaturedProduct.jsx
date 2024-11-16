@@ -3,8 +3,8 @@ import FeatureProductCarousal from './FeatureProductCarousal'
 
 const FeaturedProduct = () => {
   return (
-    <div className='bg-[#C4C197]'>
-        <div className='h4 flex justify-center items-center pb-8'>Our Featured Product</div>
+    <div className='bg-[#C4C197] text-dark'>
+        <div className='h4 flex justify-center items-center pt-4 pb-8'>Our Featured Product</div>
         <div className='sm:flex sm:justify-between'>
             <div className='sm:flex sm:items-center'>
               <div>

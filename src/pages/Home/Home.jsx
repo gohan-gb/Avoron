@@ -4,6 +4,7 @@ import MarginWrapper from '../../common/MarginWrapper'
 import NewArrivals from './NewArrivals'
 import ExploreCollection from './ExploreCollection'
 import FeatureProduct from './FeaturedProduct'
+import MySiteMission from './components/MySiteMission'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <ExploreCollection/>
      </MarginWrapper>
      <FeatureProduct />
+     <MySiteMission />
     </div>
   )
 }

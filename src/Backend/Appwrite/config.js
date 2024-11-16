@@ -118,7 +118,7 @@ export class Config {
                 description: product.description,
                 category: product.category,
             }));
-            console.log(productData);
+            // console.log(productData);
             return productData; // Return products with image links
     
         } catch (error) {
@@ -155,11 +155,47 @@ export class Config {
                 description: product.description,
                 category: product.category
             }));
-            console.log(productData);
+            // console.log(productData);
             return productData;
     
         } catch (error) {
             console.log("Appwrite service :: getProducts :: error", error);
+            throw error;
+        }
+    }
+
+    async getallProducts() {
+        try {
+            const productForCategories = await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId
+            );
+    
+            const productdata = productForCategories.documents;
+    
+            const productsWithImageLinks = await Promise.all(productdata.map(async product => {
+                const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+                return {
+                    ...product,
+                    images: imageLinks
+                };
+            }));
+
+            const productData = productsWithImageLinks.map((product) => ({
+                id: product.$id,
+                title: product.title,
+                price: product.price,
+                isDiscount: product.discountOption,
+                discountedPrice: product.discPrice,
+                images: product.images,
+                description: product.description,
+                category: product.category
+            }));
+            // console.log(productData);
+            return productData;
+    
+        } catch (error) {
+            console.log("Appwrite service :: getallProducts :: error", error);
             throw error;
         }
     }

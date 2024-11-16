@@ -124,7 +124,7 @@ function FileUploadForm() {
                 />
             </div>
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
                     Category
                 </label>
@@ -137,6 +137,29 @@ function FileUploadForm() {
                     placeholder="Enter category one"
                     required
                 />
+            </div> */}
+
+            <div className="mb-4">
+                <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="category"
+                >
+                    Category
+                </label>
+                <select
+                    id="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required
+                >
+                    <option value="" disabled>
+                    Select a category
+                    </option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Sarees">Sarees</option>
+                </select>
             </div>
 
             <div className="mb-4">

@@ -32,7 +32,7 @@ export class Config {
         }
     };
 
-    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category ) {
+    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured ) {
         try {
             const metadata = await this.databases.createDocument(
                 conf.appwriteDatabaseId, 
@@ -46,6 +46,8 @@ export class Config {
                     images: images,
                     description: description,
                     category: category,
+                    isNewlyAdded: isNewlyAdded,
+                    isFeatured: isFeatured,
                 }
             );
             // console.log(metadata);
@@ -56,7 +58,7 @@ export class Config {
         }
     };
 
-    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category) { 
+    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured) { 
         try {
             // Array to hold the file IDs
             const imageIds = [];
@@ -77,7 +79,9 @@ export class Config {
                 discPrice,
                 imageIds,
                 description,
-                category
+                category,
+                isNewlyAdded,
+                isFeatured
             );
     
             console.log("File and metadata stored successfully:", metadata);
@@ -117,9 +121,11 @@ export class Config {
                 images: product.images, // Assuming `images` is an array of URLs
                 description: product.description,
                 category: product.category,
+                isNewlyAdded: product.isNewlyAdded,
+                isFeatured: product.isFeatured
             }));
             // console.log(productData);
-            return productData; // Return products with image links
+            return productData;
     
         } catch (error) {
             console.log("Appwrite service :: getProductsForCategories :: error", error);
@@ -153,7 +159,9 @@ export class Config {
                 discountedPrice: product.discPrice,
                 images: product.images,
                 description: product.description,
-                category: product.category
+                category: product.category,
+                isNewlyAdded: product.isNewlyAdded,
+                isFeatured: product.isFeatured
             }));
             // console.log(productData);
             return productData;
@@ -189,7 +197,9 @@ export class Config {
                 discountedPrice: product.discPrice,
                 images: product.images,
                 description: product.description,
-                category: product.category
+                category: product.category,
+                isNewlyAdded: product.isNewlyAdded,
+                isFeatured: product.isFeatured
             }));
             // console.log(productData);
             return productData;

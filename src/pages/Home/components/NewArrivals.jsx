@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import config from "../../../Backend/Appwrite/config";
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -24,6 +25,8 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const NewArrivals = () => {
+  const [newlyAddedProducts, setnewlyAddedProducts] = useState([]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -48,20 +51,29 @@ const NewArrivals = () => {
     ],
   };
 
-  const products = [
-    { id: 1, name: "Product 1", price: "150rs", image: "https://images.unsplash.com/photo-1656428852088-dc40d6c76885?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 2, name: "Product 2", price: "250rs", image: "https://images.unsplash.com/photo-1723802205505-2f88b2227718?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 3, name: "Product 3", price: "350rs", image: "https://images.unsplash.com/photo-1665159882686-3d4fc7b036a4?q=80&w=2041&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 4, name: "Product 4", price: "450rs", image: "https://images.unsplash.com/photo-1651160670627-2896ddf7822f?q=80&w=1968&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 5, name: "Product 5", price: "550rs", image: "https://images.unsplash.com/photo-1695049918857-1e27d67782e5?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-  ];
+  const getnewlyAddedProducts = async () => {
+    try {
+      const productsdata = await config.getnewlyAddedProducts();
+      if (productsdata && productsdata.length > 0) {
+        setnewlyAddedProducts(productsdata);
+      } else {
+        console.error("Error: No products data received");
+      }
+    } catch (error) {
+      console.error("Error fetching featured products:", error);
+    }
+  };
+
+  useEffect(() => {
+    getnewlyAddedProducts();
+  }, [newlyAddedProducts.length]);
 
   return (
     <div>
       <div className="h4 text-center mt-8">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8">
         <Slider {...settings}>
-          {products.map((product) => (
+          {/* {newlyAddedProducts.map((product) => (
             <div key={product.id} className="p-2">
               <div className="flex flex-col items-center justify-center">
                 <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-[400px] flex items-center justify-center">
@@ -79,7 +91,34 @@ const NewArrivals = () => {
                 </div>
               </div>
             </div>
+          ))} */}
+          {newlyAddedProducts.map((product) => (
+            <div key={product.id} className="p-2">
+              <div className="flex flex-col items-center justify-center">
+                {/* Image Container */}
+                <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-[400px] flex items-center justify-center">
+                  <img
+                    src={product.images[0]} // Assuming `image` is still a valid property
+                    alt={product.title} // Use title for accessibility
+                    className="w-[200px] h-[200px] object-cover mx-auto"
+                  />
+                </div>
+
+                {/* Product Title */}
+                <div className="text-center mb-1 text-lg font-light text-gray-700">
+                  {product.title}
+                </div>
+
+                {/* Product Price */}
+                <div className="text-center mb-1 text-base font-light text-gray-700">
+                  {product.isDiscount === "yes" && product.discountedPrice 
+                    ? `Discounted: ₹${product.discountedPrice}`
+                    : `₹${product.price}`}
+                </div>
+              </div>
+            </div>
           ))}
+
         </Slider>
       </div>
     </div>

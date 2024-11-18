@@ -211,6 +211,45 @@ export class Config {
         }
     }
 
+    async getnewlyAddedProducts() {
+        try {
+            const productForCategories = await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                [Query.equal("isNewlyAdded", "yes")]
+            );
+    
+            const productdata = productForCategories.documents;
+    
+            const productsWithImageLinks = await Promise.all(productdata.map(async product => {
+                const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+                return {
+                    ...product,
+                    images: imageLinks
+                };
+            }));
+
+            const productData = productsWithImageLinks.map((product) => ({
+                id: product.$id,
+                title: product.title,
+                price: product.price,
+                isDiscount: product.discountOption,
+                discountedPrice: product.discPrice,
+                images: product.images,
+                description: product.description,
+                category: product.category,
+                isNewlyAdded: product.isNewlyAdded,
+                isFeatured: product.isFeatured
+            }));
+            // console.log(productData);
+            return productData;
+    
+        } catch (error) {
+            console.log("Appwrite service :: getfeaturedProducts :: error", error);
+            throw error;
+        }
+    }
+
     async getallProducts() {
         try {
             const productForCategories = await this.databases.listDocuments(

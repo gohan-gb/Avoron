@@ -179,7 +179,7 @@ export default function FeatureProductCarousal() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-96 md:w-3/4 overflow-hidden rounded-lg shadow-lg"
+              className="relative w-full h-96 md:w-full overflow-hidden rounded-lg shadow-lg"
             >
               <img
                 src={featuredProducts[currentIndex].images[0]} // Use the first image

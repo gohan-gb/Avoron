@@ -1,5 +1,6 @@
 import React from 'react'
 import FeatureProductCarousal from './FeatureProductCarousal'
+import Button from '../../../components/Button';
 
 const FeaturedProduct = () => {
   return (
@@ -9,9 +10,11 @@ const FeaturedProduct = () => {
             <div className='sm:flex sm:items-center'>
               <div>
                 <section className='h3 pb-6 flex justify-center sm:pl-20 pl-12'>People Love These!</section>
-                <section className='pb-8 p1 flex justify-center'>Our Best Products</section>
+                <section className='pb-1 p1 flex justify-center'>Our Best Products</section>
                 <section className='flex justify-center'>
-                  <button className='pt-22'>Shop Now</button>
+                  <div className='mt-4 lg:mt-8 md:mt-6'>
+                    <Button  text='Shop Now' />
+                  </div>
                 </section>
               </div>
             </div>

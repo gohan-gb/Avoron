@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../../components/Button';
+import {Link} from "react-router-dom"
 
 const HeroSection = () => {
   return (
@@ -25,7 +26,7 @@ const HeroSection = () => {
           Shop our premium selection of goddess hair, dresses, temple swings, <br className="hidden md:block" /> and traditional accessories to enrich your devotional space with elegance.
         </p>
         <div className='mt-4 lg:mt-8 md:mt-6'>
-         <Button  text='Explore More' />
+         <Link to = "/products"><Button  text='Explore More' /></Link>
         </div>
       </div>
     </div>

@@ -302,6 +302,78 @@ export class Config {
         }
     }
 
+    // async getsingleProductData(id) {
+    //     try {
+    //         const singleProductData = await this.databases.getDocument(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             id,
+    //         );
+
+    //         // const productsWithImageLinks = await Promise.all(singleProductData.map(async product => {
+    //         //     const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+    //         //     return {
+    //         //         ...product,
+    //         //         images: imageLinks
+    //         //     };
+    //         // }));
+
+    //         // const productData = productsWithImageLinks.map((product) => ({
+    //         //     id: product.$id,
+    //         //     title: product.title,
+    //         //     price: product.price,
+    //         //     isDiscount: product.discountOption,
+    //         //     discountedPrice: product.discPrice,
+    //         //     images: product.images,
+    //         //     description: product.description,
+    //         //     category: product.category,
+    //         //     isNewlyAdded: product.isNewlyAdded,
+    //         //     isFeatured: product.isFeatured
+    //         // }));
+
+    //         return singleProductData;
+    
+    //     } catch (error) {
+    //         console.log("Appwrite service :: getsingleProductData :: error", error);
+    //         throw error;
+    //     }
+    // }
+    
+    async getsingleProductData(id) {
+        try {
+            // Fetch the single product document
+            const singleProductData = await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                id
+            );
+    
+            // Fetch the image links for the product
+            const imageLinks = await Promise.all(singleProductData.images.map(imageId => this.getFile(imageId)));
+    
+            // Construct the product object with the desired structure
+            const productData = {
+                id: singleProductData.$id,
+                title: singleProductData.title,
+                price: singleProductData.price,
+                isDiscount: singleProductData.discountOption,
+                discountedPrice: singleProductData.discPrice,
+                images: imageLinks,
+                description: singleProductData.description,
+                category: singleProductData.category,
+                isNewlyAdded: singleProductData.isNewlyAdded,
+                isFeatured: singleProductData.isFeatured,
+            };
+    
+            return productData;
+    
+        } catch (error) {
+            console.log("Appwrite service :: getsingleProductData :: error", error);
+            throw error;
+        }
+    }
+    
+
     async getFile (fileId) {
         try {
             const result = this.bucket.getFileView(conf.appwriteBucketId, fileId);

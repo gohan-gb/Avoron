@@ -70,7 +70,7 @@ const ExploreCollection = () => {
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
-            onClick={() => getProductsforthiscategory("category", categories[1])}>
+            onClick={() => getProductsforthiscategory("category", categories[2])}>
               <Button  text='Explore More' />
             </div>
           </div>
@@ -87,7 +87,7 @@ const ExploreCollection = () => {
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
-            onClick={() => getProductsforthiscategory("category", categories[2])}>
+            onClick={() => getProductsforthiscategory("category", categories[1])}>
               <Button  text='Explore More'/>
             </div>
           </div>

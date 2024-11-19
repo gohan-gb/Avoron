@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import MarginWrapper from "../../../common/MarginWrapper";
 import Button from "../../../components/Button";
 import { useParams } from "react-router-dom";
-import data from "../../../data/productData";
 import { LuIndianRupee } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSelector } from 'react-redux'
 
 // Import Swiper styles
 import "swiper/css";
@@ -18,9 +18,10 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const SingleProduct = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const { id } = useParams();
+  // const { id } = useParams();
+  const singleProduct  = useSelector((state) => state.product.singleproductdata)
 
-  const singleProduct = data.find((product) => product.id == id);
+  // const singleProduct = data.find((product) => product.id == id);
 
   const [activeIndex, setActiveIndex] = useState(0); // Open first accordion by default
 

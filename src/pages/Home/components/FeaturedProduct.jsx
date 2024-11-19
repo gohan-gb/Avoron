@@ -1,6 +1,7 @@
 import React from 'react'
 import FeatureProductCarousal from './FeatureProductCarousal'
 import Button from '../../../components/Button';
+import {Link} from "react-router-dom"
 
 const FeaturedProduct = () => {
   return (
@@ -13,7 +14,7 @@ const FeaturedProduct = () => {
                 <section className='pb-1 p1 flex justify-center'>Our Best Products</section>
                 <section className='flex justify-center'>
                   <div className='mt-4 lg:mt-8 md:mt-6'>
-                    <Button  text='Shop Now' />
+                  <Link to = "/products"><Button  text='Shop Now' /></Link>
                   </div>
                 </section>
               </div>

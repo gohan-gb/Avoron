@@ -5,6 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import config from "../../../Backend/Appwrite/config";
+import Button from '../../../components/Button';
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {singleproductFetch} from "../../../Backend/Redux/ProductSlice"
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -26,6 +30,22 @@ const PrevArrow = ({ onClick }) => (
 
 const NewArrivals = () => {
   const [newlyAddedProducts, setnewlyAddedProducts] = useState([]);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const gotosingleProduct = async (id) => {
+    try {
+      const stringid = String(id)
+      const singleproductdata = await config.getsingleProductData (stringid)
+      if (singleproductdata) {
+        dispatch(singleproductFetch(singleproductdata)); 
+        navigate(`/products/${id}`)
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
 
   const settings = {
     dots: true,
@@ -73,33 +93,14 @@ const NewArrivals = () => {
       <div className="h4 text-center mt-8">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8">
         <Slider {...settings}>
-          {/* {newlyAddedProducts.map((product) => (
-            <div key={product.id} className="p-2">
-              <div className="flex flex-col items-center justify-center">
-                <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-[400px] flex items-center justify-center">
-                  <img
-                    src={product.image}
-                    alt={`Product ${product.id}`}
-                    className="w-[200px] h-[200px] object-cover mx-auto"
-                  />
-                </div>
-                <div className="text-center mb-1 text-lg font-light text-gray-700">
-                  {product.name}
-                </div>
-                <div className="text-center mb-1 text-base font-light text-gray-700">
-                  {product.price}
-                </div>
-              </div>
-            </div>
-          ))} */}
           {newlyAddedProducts.map((product) => (
             <div key={product.id} className="p-2">
               <div className="flex flex-col items-center justify-center">
                 {/* Image Container */}
                 <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-[400px] flex items-center justify-center">
                   <img
-                    src={product.images[0]} // Assuming `image` is still a valid property
-                    alt={product.title} // Use title for accessibility
+                    src={product.images[0]} 
+                    alt={product.title} 
                     className="w-[200px] h-[200px] object-cover mx-auto"
                   />
                 </div>
@@ -115,6 +116,7 @@ const NewArrivals = () => {
                     ? `Discounted: ₹${product.discountedPrice}`
                     : `₹${product.price}`}
                 </div>
+                <div onClick={() => gotosingleProduct(product.id)}><Button  text='Buy this' /></div>
               </div>
             </div>
           ))}

@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import ProductCard from "../../components/ProductCard";
 import MarginWrapper from "../../common/MarginWrapper";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import config from '../../Backend/Appwrite/config';
 import {useDispatch} from 'react-redux'
-import {productFetch} from "../../Backend/Redux/ProductSlice"
+import {productFetch, singleproductFetch} from "../../Backend/Redux/ProductSlice"
 import { useLocation } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 
 const Products = () => {
 
@@ -16,6 +16,7 @@ const Products = () => {
     const [menu, setMenu] = useState(false);
     const dispatch = useDispatch()
     const location = useLocation();
+    const navigate = useNavigate();
     const [categoryName, setCategoryName] = useState(location.state?.categoryName || "All Products");
 
     const allcategory = async () => {
@@ -69,7 +70,22 @@ const Products = () => {
       }
     }, [location.state]); // Re-run effect when location.state changes
 
+    const gotosingleProduct = async (id) => {
+      try {
+        const stringid = String(id)
+        const singleproductdata = await config.getsingleProductData (stringid)
+        if (singleproductdata) {
+          dispatch(singleproductFetch(singleproductdata)); 
+          navigate(`/products/${id}`)
+        }
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+
     const productDatas = useSelector((state) => state.product.productData);
+    
     
     
     const handleMenuBar = () => {
@@ -149,15 +165,13 @@ const Products = () => {
             <div className=" flex flex-wrap gap-4 justify-center items-start ">
               {productDatas.map(function (item) {
                 return (
-                  <Link to={`/products/${item.id}`}>
-                  <div>
+                  <div onClick={() => {gotosingleProduct(item.id)}}>
                     <ProductCard
                       image={item.images[0]}
                       title={item.title}
                       price={item.price}
                     />
                   </div>
-                  </Link>
                 );
               })}
             </div>

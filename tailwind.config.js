@@ -19,7 +19,8 @@ export default {
       },
       fontFamily: {
         sans: ['Helvetica', 'sans-serif'],
-        fraunceus: ['Fraunceus', 'serif']
+        fraunceus: ['Fraunceus', 'serif'],
+        bodoni : ['Bodoni-Moda']
       },
       fontSize: {
         'custom-xl': '128px', // Custom font size 

@@ -37,12 +37,12 @@ const Navbar = () => {
 
       <section
         className={`duration-300 ${
-          menu ? "translate-y-0" : "-translate-y-full"
+          menu ? "translate-y-0" : "-translate-y-[120%]"
         } fixed top-0 left-0 right-0 h-full w-full bg-background z-20 transition-transform ease-in-out`}
       >
         <MarginWrapper>
           <div className="flex justify-between mt-8">
-            <ul onClick={handleNavbar} className="h3 flex flex-col gap-6 mt-36 ">
+            <ul onClick={handleNavbar} className="h3 flex flex-col gap-6 mt-24 ">
               <Link to={'/'}><li className="cursor-pointer">Home</li></Link>
               <Link to={'products'}><li className="cursor-pointer">Shop All</li></Link>
               <Link to={'about'}><li className="cursor-pointer">About Us</li></Link>
@@ -55,7 +55,6 @@ const Navbar = () => {
         </MarginWrapper>
       </section>
 
-      {menu && <div className=""></div>}
     </nav>
   );
 };

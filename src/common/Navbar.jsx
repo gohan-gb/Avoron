@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-background z-10 fixed top-0 font-fraunceus text-2xl w-full">
+    <nav className="bg-background z-20 fixed top-0 font-fraunceus text-2xl w-full">
       <MarginWrapper>
         <div className="flex justify-between items-center">
           <Link to={'/'}><img
@@ -22,7 +22,7 @@ const Navbar = () => {
             alt="logo"
           /></Link>
           <ul className="sm:flex justify-between items-center gap-10 hidden">
-            <Link to={'products'}><li>Shop</li></Link>
+            <Link to={'products'}><li>Shop All</li></Link>
             <Link to={'about'}><li>About Us</li></Link>
             <Link to={'contact'}><li>Contact</li></Link>
           </ul>
@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="flex justify-between mt-8">
             <ul onClick={handleNavbar} className="h3 flex flex-col gap-6 mt-36 ">
               <Link to={'/'}><li className="cursor-pointer">Home</li></Link>
-              <Link to={'products'}><li className="cursor-pointer">Shop</li></Link>
+              <Link to={'products'}><li className="cursor-pointer">Shop All</li></Link>
               <Link to={'about'}><li className="cursor-pointer">About Us</li></Link>
               <Link to={'contact'}><li className="cursor-pointer">Contact</li></Link>
             </ul>

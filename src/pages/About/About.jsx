@@ -1,4 +1,5 @@
 import React from 'react'
+import AnimatedImage from './AnimateImage'
 
 const About = () => {
   return (
@@ -38,11 +39,11 @@ const About = () => {
      </div>
 
      <div>
-      animation
+      <AnimatedImage />
      </div>
 
      <div className='my-12'>
-     <p className="text-center font-bodoni text-dark mt-8 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl ">  My Site Way</p>
+     <p className="text-center font-bodoni text-dark mt-8 text-6xl ">  My Site Way</p>
      </div>
 
       <section className="flex flex-col md:flex-row justify-center gap-12 md:gap-16 lg:gap-24 xl:gap-32 items-center px-4 md:px-8 lg:px-12 py-12">

@@ -10,6 +10,7 @@ import Contact from '../src/pages/Contact/Contact'
 import Products from '../src/pages/Products/Products'
 import Adminpanel from '../src/Backend/Appwrite/Adminpanel'
 import SingleProduct from "./pages/Products/components/SingleProduct"
+import ScrollToTop from "./pages/ScrollToTop"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <>
      <Navbar/>
      <main>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -25,7 +27,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/admin-panel" element={<Adminpanel />} />
-        <Route path="/single-product" element={<SingleProduct />} />
       </Routes>
      </main>
      <Footer />

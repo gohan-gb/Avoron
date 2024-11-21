@@ -12,6 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@reduxjs/toolkit": "^2.3.0",
+    "aos": "^2.3.4",
     "appwrite": "^16.0.2",
     "framer-motion": "^11.11.13",
     "lucide-react": "^0.456.0",

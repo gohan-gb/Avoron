@@ -1,7 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Button from '../../../components/Button'
+import Aos from 'aos';
 
 const WeekendSale = () => {
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500, 
+      easing: "ease-in", 
+      once: false, 
+    });
+  }, []);
+  
   return (
     <div className='mt-24'>
       <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px] bg-black rounded-s-xl rounded-e-xl overflow-hidden group">
@@ -10,9 +20,9 @@ const WeekendSale = () => {
     alt="salephotos"
     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
   />
-  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-wrap px-5">
+  <div data-aos='fade-in' className="absolute inset-0 flex flex-col items-center justify-center text-center text-wrap px-5">
     <h2 className="h4 text-light">Happening Now !!</h2>
-    <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl mt-8 mb-8 text-yellow2">Weekend Sale</h1>
+    <h1  className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl mt-8 mb-8 text-yellow2">Weekend Sale</h1>
     <Button text="Shop Now" />
   </div>
 </div>

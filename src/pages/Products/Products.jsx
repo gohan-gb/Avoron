@@ -99,18 +99,17 @@ const Products = () => {
           <div className="text-dark w-[25%] hidden sm:block">
             <h3 className="h4 mb-4">Browse by</h3>
             <ul className="flex flex-col justify-start gap-2 mb-20">
-              <li onClick={() => getAllProducts()}>All Products</li>
+              <li className="cursor-pointer" onClick={() => getAllProducts()}>All Products</li>
               {categories.map((category, index) => (
-                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                <li className="cursor-pointer" key={index} onClick={() => getProductsforthiscategory("category", category)}>
                   {category}
                 </li>
               ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li>Price</li>
-              <li>size</li>
-              <li>category</li>
+              <li className="cursor-pointer">Price</li>
+              
             </ul>
           </div>
 
@@ -119,7 +118,7 @@ const Products = () => {
             <div className=" pb-16">
               <h2 className="h3  pb-4 text-dark text-center sm:text-left">{categoryName}</h2>
 
-              <h3 onClick={handleMenuBar} className="text-dark text-right p2 underline sm:hidden block cursor-pointer"> Filter & Sort </h3>
+              <h3 onClick={handleMenuBar} className="text-dark text-right p2 underline sm:hidden block cursor-pointer"> Categories /Filter </h3>
 
               <section
         className={`duration-300 ${
@@ -134,16 +133,14 @@ const Products = () => {
             <ul className="flex flex-col justify-start gap-2 mb-8">
               <li onClick={() => getAllProducts()}>All Products</li>
               {categories.map((category, index) => (
-                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                <li className="cursor-pointer" key={index} onClick={() => getProductsforthiscategory("category", category)}>
                   {category}
                 </li>
               ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li>Price</li>
-              <li>size</li>
-              <li>category</li>
+              <li className="cursor-pointer">Price</li>
             </ul>
           </div>
             </div>

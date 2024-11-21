@@ -1,12 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, {
+   useState,
+   useRef, 
+   useEffect 
+  } from "react";
 import emailjs from "@emailjs/browser";
 import MarginWrapper from "../../common/MarginWrapper";
+import Aos from "aos";
 
 const YOUR_SERVICE_ID = import.meta.env.VITE_YOUR_SERVICE_ID;
 const YOUR_TEMPLATE_ID = import.meta.env.VITE_YOUR_TEMPLATE_ID;
 const YOUR_PUBLIC_ID = import.meta.env.VITE_YOUR_PUBLIC_ID;
 
 const Contact = () => {
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500, 
+      easing: "ease-in", 
+      once: true, 
+    });
+  }, []);
 
   const form = useRef();
 
@@ -39,6 +52,12 @@ const Contact = () => {
       .then(
         () => {
           alert('Message sent successfully!');
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
+          });
           form.current.reset();
         },
         (error) => {                  
@@ -68,7 +87,7 @@ const Contact = () => {
 
       <MarginWrapper>
         <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pt-16 pb-32 ">
-          <section className="">
+          <section data-aos='fade-right' className="">
             <h2 className="h3 pb-16"> Visit Our Store </h2>
             <h3 className="h4 pb-8"> Find Us Here </h3>
             <p className="p1">
@@ -76,8 +95,9 @@ const Contact = () => {
               82 PC Sarani, <br /> Darjeeling, West Bengal, 734004{" "}
             </p>
           </section>
-          <section>
+          <section >
             <img
+              data-aos= 'fade-left'
               className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl"
               src="https://images.pexels.com/photos/6387695/pexels-photo-6387695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="contact"
@@ -89,13 +109,13 @@ const Contact = () => {
       <form onSubmit={handleSubmit} ref={form}>
       <MarginWrapper>
         <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pb-16">
-          <section>
+          <section data-aos='fade-right'>
             <h2 className="h3 pb-8">Customer Support</h2>
             <p className="p1">Phone: +33 556505050</p>
             <p className="p1">Email: info@mysite.com</p>
           </section>
 
-          <section className="sm:w-[480px] w-80 flex-col">
+          <section data-aos='fade-in' className="sm:w-[480px] w-80 flex-col">
             {error && <p className="text-red-500">{error}</p>}
 
             <div className="flex justify-between sm:flex-row flex-col gap-10 mb-8">

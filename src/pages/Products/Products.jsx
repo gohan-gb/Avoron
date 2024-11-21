@@ -8,8 +8,18 @@ import {useDispatch} from 'react-redux'
 import {productFetch, singleproductFetch} from "../../Backend/Redux/ProductSlice"
 import { useLocation } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Products = () => {
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500, 
+      easing: "ease-in", 
+      once: true, 
+    });
+  }, []);
 
     // const [categoryName, setCategoryName] = useState(" ")
     const [categories, setCategories] = useState([]);
@@ -162,7 +172,7 @@ const Products = () => {
             <div className=" flex flex-wrap gap-4 justify-center items-start ">
               {productDatas.map(function (item) {
                 return (
-                  <div onClick={() => {gotosingleProduct(item.id)}}>
+                  <div data-aos = 'fade-up' onClick={() => {gotosingleProduct(item.id)}}>
                     <ProductCard
                       image={item.images[0]}
                       title={item.title}

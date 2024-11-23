@@ -24,15 +24,19 @@ const Products = () => {
     // const [categoryName, setCategoryName] = useState(" ")
     const [categories, setCategories] = useState([]);
     const [menu, setMenu] = useState(false);
+    const [sortOrder, setSortOrder] = useState("");
     const dispatch = useDispatch()
     const location = useLocation();
     const navigate = useNavigate();
     const [categoryName, setCategoryName] = useState(location.state?.categoryName || "All Products");
+    const [loading, setLoading] = useState(true)
 
     const allcategory = async () => {
       try {
+        setLoading(true)
         const categories = await config.getAllCategories()
         setCategories(categories);
+        setLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -47,10 +51,12 @@ const Products = () => {
     
     const getProductsforthiscategory = async (category, fetchedCategory) => {
       try {
+        setLoading(true)
         const productsdata = await config.getProducts(category, fetchedCategory)
         if (productsdata) {
           dispatch(productFetch(productsdata));
           setCategoryName(fetchedCategory)
+          setLoading(false)
         } else {
           console.log(error);
         }
@@ -61,10 +67,12 @@ const Products = () => {
 
     const getAllProducts = async () => {
       try {
+        setLoading(true)
         const productsdata = await config.getallProducts()
         if (productsdata) {
           dispatch(productFetch(productsdata)); 
           setCategoryName("All Products");
+          setLoading(false)
         }
       } catch (error) {
         console.log(error);
@@ -96,11 +104,32 @@ const Products = () => {
 
     const productDatas = useSelector((state) => state.product.productData);
     
-    
+    const handleSortChange = (e) => {
+      const selectedOrder = e.target.value;
+      setSortOrder(selectedOrder);
+      
+      const sortedProducts = [...productDatas].sort((a, b) => {
+        if (selectedOrder === "ascending") {
+          return a.price - b.price;
+        } else if (selectedOrder === "decending") {
+          return b.price - a.price; 
+        }
+        return 0;
+      });
+      dispatch(productFetch(sortedProducts));
+    };
     
     const handleMenuBar = () => {
       setMenu(!menu);
     };
+
+    if(loading) {
+      return <div> <MarginWrapper>
+        <div className='mt-64 text-dark text-6xl sm:text-8xl'>
+                    Loading...
+                </div>
+        </MarginWrapper> </div>
+    }
 
   return (
     <>
@@ -118,7 +147,12 @@ const Products = () => {
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li className="cursor-pointer">Price</li>
+              <label for="price"> price: </label>
+              <select className="cursor-pointer" onChange={handleSortChange}>
+                <option value="" > Select</option>
+                <option value="ascending"> Lower To Higher</option>
+                <option value="decending"> Higher To Lower</option>
+              </select>
               
             </ul>
           </div>
@@ -150,7 +184,12 @@ const Products = () => {
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li className="cursor-pointer">Price</li>
+              <label for="price"> price: </label>
+              <select className="cursor-pointer" onChange={handleSortChange}>
+                <option value=""> Select</option>
+                <option value="ascending"> Lower To Higher</option>
+                <option value="decending"> Higher To Lower</option>
+              </select>
             </ul>
           </div>
             </div>

@@ -90,7 +90,7 @@ const NewArrivals = () => {
 
   return (
     <div>
-      <div className="h4 text-center mt-8">New Arrivals</div>
+      <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8">
         <Slider {...settings}>
           {newlyAddedProducts.map((product) => (

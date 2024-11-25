@@ -8,21 +8,35 @@ import {useDispatch} from 'react-redux'
 import {productFetch, singleproductFetch} from "../../Backend/Redux/ProductSlice"
 import { useLocation } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Products = () => {
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500, 
+      easing: "ease-in", 
+      once: true, 
+    });
+  }, []);
 
     // const [categoryName, setCategoryName] = useState(" ")
     const [categories, setCategories] = useState([]);
     const [menu, setMenu] = useState(false);
+    const [sortOrder, setSortOrder] = useState("");
     const dispatch = useDispatch()
     const location = useLocation();
     const navigate = useNavigate();
     const [categoryName, setCategoryName] = useState(location.state?.categoryName || "All Products");
+    const [loading, setLoading] = useState(true)
 
     const allcategory = async () => {
       try {
+        setLoading(true)
         const categories = await config.getAllCategories()
         setCategories(categories);
+        setLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -37,10 +51,12 @@ const Products = () => {
     
     const getProductsforthiscategory = async (category, fetchedCategory) => {
       try {
+        setLoading(true)
         const productsdata = await config.getProducts(category, fetchedCategory)
         if (productsdata) {
           dispatch(productFetch(productsdata));
           setCategoryName(fetchedCategory)
+          setLoading(false)
         } else {
           console.log(error);
         }
@@ -51,10 +67,12 @@ const Products = () => {
 
     const getAllProducts = async () => {
       try {
+        setLoading(true)
         const productsdata = await config.getallProducts()
         if (productsdata) {
           dispatch(productFetch(productsdata)); 
           setCategoryName("All Products");
+          setLoading(false)
         }
       } catch (error) {
         console.log(error);
@@ -86,11 +104,32 @@ const Products = () => {
 
     const productDatas = useSelector((state) => state.product.productData);
     
-    
+    const handleSortChange = (e) => {
+      const selectedOrder = e.target.value;
+      setSortOrder(selectedOrder);
+      
+      const sortedProducts = [...productDatas].sort((a, b) => {
+        if (selectedOrder === "ascending") {
+          return a.price - b.price;
+        } else if (selectedOrder === "decending") {
+          return b.price - a.price; 
+        }
+        return 0;
+      });
+      dispatch(productFetch(sortedProducts));
+    };
     
     const handleMenuBar = () => {
       setMenu(!menu);
     };
+
+    if(loading) {
+      return <div> <MarginWrapper>
+        <div className='mt-64 text-dark text-6xl sm:text-8xl'>
+                    Loading...
+                </div>
+        </MarginWrapper> </div>
+    }
 
   return (
     <>
@@ -99,18 +138,22 @@ const Products = () => {
           <div className="text-dark w-[25%] hidden sm:block">
             <h3 className="h4 mb-4">Browse by</h3>
             <ul className="flex flex-col justify-start gap-2 mb-20">
-              <li onClick={() => getAllProducts()}>All Products</li>
+              <li className="cursor-pointer" onClick={() => getAllProducts()}>All Products</li>
               {categories.map((category, index) => (
-                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                <li className="cursor-pointer" key={index} onClick={() => getProductsforthiscategory("category", category)}>
                   {category}
                 </li>
               ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li>Price</li>
-              <li>size</li>
-              <li>category</li>
+              <label for="price"> price: </label>
+              <select className="cursor-pointer" onChange={handleSortChange}>
+                <option value="" > Select</option>
+                <option value="ascending"> Lower To Higher</option>
+                <option value="decending"> Higher To Lower</option>
+              </select>
+              
             </ul>
           </div>
 
@@ -119,7 +162,7 @@ const Products = () => {
             <div className=" pb-16">
               <h2 className="h3  pb-4 text-dark text-center sm:text-left">{categoryName}</h2>
 
-              <h3 onClick={handleMenuBar} className="text-dark text-right p2 underline sm:hidden block cursor-pointer"> Filter & Sort </h3>
+              <h3 onClick={handleMenuBar} className="text-dark text-right p2 underline sm:hidden block cursor-pointer"> Categories /Filter </h3>
 
               <section
         className={`duration-300 ${
@@ -134,16 +177,19 @@ const Products = () => {
             <ul className="flex flex-col justify-start gap-2 mb-8">
               <li onClick={() => getAllProducts()}>All Products</li>
               {categories.map((category, index) => (
-                <li key={index} onClick={() => getProductsforthiscategory("category", category)}>
+                <li className="cursor-pointer" key={index} onClick={() => getProductsforthiscategory("category", category)}>
                   {category}
                 </li>
               ))}
             </ul>
             <h3 className="h4 mb-4">Filter by</h3>
             <ul className="flex flex-col justify-start gap-2">
-              <li>Price</li>
-              <li>size</li>
-              <li>category</li>
+              <label for="price"> price: </label>
+              <select className="cursor-pointer" onChange={handleSortChange}>
+                <option value=""> Select</option>
+                <option value="ascending"> Lower To Higher</option>
+                <option value="decending"> Higher To Lower</option>
+              </select>
             </ul>
           </div>
             </div>
@@ -165,7 +211,7 @@ const Products = () => {
             <div className=" flex flex-wrap gap-4 justify-center items-start ">
               {productDatas.map(function (item) {
                 return (
-                  <div onClick={() => {gotosingleProduct(item.id)}}>
+                  <div data-aos = 'fade-up' onClick={() => {gotosingleProduct(item.id)}}>
                     <ProductCard
                       image={item.images[0]}
                       title={item.title}

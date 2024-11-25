@@ -11,6 +11,13 @@
   font-style: normal
 }
 
+@font-face {
+font-family: 'Bodoni';
+src: url('/fonts/bodoni.tff') format(ttf);
+font-weight: normal;
+  font-style: normal
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

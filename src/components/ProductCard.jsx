@@ -11,11 +11,13 @@ const ProductCard = ( {
     <article className='pb-4 2xl:w-96 lg:w-72 md:w-60 sm:w-52 w-40'>
         <div className='flex flex-col justify-start items-start'>
         <img src={image} 
-        className='2xl:w-96 lg:w-72 md:w-60 sm:w-52 w-40  2xl:h-96 lg:h-72 md:h-60 sm:h-52  h-40 object-cover pb-2 rounded-3xl'
+        className='cursor-pointer 2xl:w-96 lg:w-72 md:w-60 sm:w-52 w-40  2xl:h-96 lg:h-72 md:h-60 sm:h-52  h-40 object-cover pb-2 rounded-3xl'
         alt="product" />
-        <h2 className='p2 pb-1'> {title} </h2>
-        <div className='flex'> <LuIndianRupee />
-        {price} </div>
+        <h2 className='p2 pb-1'> {title.length > 40 ? (title.slice(0,40) + '...') : title }  </h2>
+        <div className='flex gap-2'>
+        <p>₹ {price}</p>
+         <s className='text-gray-600'>{Math.round(price * 1.1) }</s> 
+        </div>
     </div>
     </article>
   )

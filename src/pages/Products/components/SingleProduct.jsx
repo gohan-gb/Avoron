@@ -14,6 +14,7 @@ import "swiper/css/thumbs";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import ButtonTwo from "../../../components/ButtonTwo";
 
 const SingleProduct = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -109,7 +110,7 @@ const SingleProduct = () => {
                 value={quantity}
               />
               <div className="mb-8 w-fit rounded-full" onClick={handleWhatsapp}>
-                <Button text="Order via Whatsapp" />
+                <ButtonTwo text="Order via Whatsapp" />
               </div>
 
               <div className="flex flex-col space-y-2 p-4">

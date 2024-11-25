@@ -7,7 +7,7 @@ import config from '../../Backend/Appwrite/config';
 import {useDispatch} from 'react-redux'
 import {productFetch, singleproductFetch} from "../../Backend/Redux/ProductSlice"
 import { useLocation } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 import Aos from "aos";
 import "aos/dist/aos.css";
 

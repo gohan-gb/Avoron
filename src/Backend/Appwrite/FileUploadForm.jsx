@@ -9,8 +9,9 @@ function FileUploadForm() {
     const [price, setPrice] = useState('');
     const [discPrice, setDiscPrice] = useState('');
     const [category, setCategory] = useState('');
-    const [isNewlyAdded, setisNewlyAdded] = useState (' ')
-    const [isFeatured, setisFeatured] = useState (' ')
+    const [isNewlyAdded, setisNewlyAdded] = useState ('no')
+    const [isFeatured, setisFeatured] = useState ('no')
+    const [stockStatus, setstockStatus] = useState(' ')
 
 
     // Handle multiple file uploads
@@ -21,7 +22,7 @@ function FileUploadForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!images.length || !title || !description || !price || (discountOption === 'yes' && !discPrice) || !category || !isNewlyAdded || !isFeatured) {
+        if (!images.length || !title || !description || !price || (discountOption === 'yes' && !discPrice) || !category || !isNewlyAdded || !isFeatured || !stockStatus) {
             alert("Please fill in all required fields");
             return;
         }
@@ -40,7 +41,8 @@ function FileUploadForm() {
                 description,
                 category,
                 isNewlyAdded,
-                isFeatured
+                isFeatured,
+                stockStatus
             );
             console.log("Product uploaded successfully:", response);
             alert("Product uploaded successfully!");
@@ -129,20 +131,6 @@ function FileUploadForm() {
                 />
             </div>
 
-            {/* <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
-                    Category
-                </label>
-                <input
-                    type="text"
-                    id="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter category one"
-                    required
-                />
-            </div> */}
 
             <div className="mb-4">
                 <label
@@ -190,6 +178,21 @@ function FileUploadForm() {
                     id="isFeatured"
                     value={isFeatured}
                     onChange={(e) => setisFeatured(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                >
+                    <option value="no">False</option>
+                    <option value="yes">True</option>
+                </select>
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="stockStatus">
+                    Stock Status
+                </label>
+                <select
+                    id="stockStatus"
+                    value={stockStatus}
+                    onChange={(e) => setstockStatus(e.target.value)}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 >
                     <option value="no">False</option>

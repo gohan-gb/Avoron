@@ -32,7 +32,7 @@ export class Config {
         }
     };
 
-    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured ) {
+    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus ) {
         try {
             const metadata = await this.databases.createDocument(
                 conf.appwriteDatabaseId, 
@@ -48,6 +48,7 @@ export class Config {
                     category: category,
                     isNewlyAdded: isNewlyAdded,
                     isFeatured: isFeatured,
+                    stockStatus: stockStatus,
                 }
             );
             // console.log(metadata);
@@ -58,7 +59,7 @@ export class Config {
         }
     };
 
-    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured) { 
+    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus) { 
         try {
             // Array to hold the file IDs
             const imageIds = [];
@@ -81,7 +82,8 @@ export class Config {
                 description,
                 category,
                 isNewlyAdded,
-                isFeatured
+                isFeatured,
+                stockStatus
             );
     
             console.log("File and metadata stored successfully:", metadata);
@@ -122,7 +124,8 @@ export class Config {
                 description: product.description,
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
-                isFeatured: product.isFeatured
+                isFeatured: product.isFeatured,
+                stockStatus: product.stockStatus
             }));
             // console.log(productData);
             return productData;
@@ -161,7 +164,8 @@ export class Config {
                 description: product.description,
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
-                isFeatured: product.isFeatured
+                isFeatured: product.isFeatured,
+                stockStatus: product.stockStatus
             }));
             // console.log(productData);
             return productData;
@@ -200,7 +204,8 @@ export class Config {
                 description: product.description,
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
-                isFeatured: product.isFeatured
+                isFeatured: product.isFeatured,
+                stockStatus: product.stockStatus
             }));
             // console.log(productData);
             return productData;
@@ -239,7 +244,8 @@ export class Config {
                 description: product.description,
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
-                isFeatured: product.isFeatured
+                isFeatured: product.isFeatured,
+                stockStatus: product.stockStatus
             }));
             // console.log(productData);
             return productData;
@@ -277,7 +283,8 @@ export class Config {
                 description: product.description,
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
-                isFeatured: product.isFeatured
+                isFeatured: product.isFeatured,
+                stockStatus: product.stockStatus
             }));
             // console.log(productData);
             return productData;
@@ -301,43 +308,6 @@ export class Config {
             throw error;
         }
     }
-
-    // async getsingleProductData(id) {
-    //     try {
-    //         const singleProductData = await this.databases.getDocument(
-    //             conf.appwriteDatabaseId,
-    //             conf.appwriteCollectionId,
-    //             id,
-    //         );
-
-    //         // const productsWithImageLinks = await Promise.all(singleProductData.map(async product => {
-    //         //     const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
-    //         //     return {
-    //         //         ...product,
-    //         //         images: imageLinks
-    //         //     };
-    //         // }));
-
-    //         // const productData = productsWithImageLinks.map((product) => ({
-    //         //     id: product.$id,
-    //         //     title: product.title,
-    //         //     price: product.price,
-    //         //     isDiscount: product.discountOption,
-    //         //     discountedPrice: product.discPrice,
-    //         //     images: product.images,
-    //         //     description: product.description,
-    //         //     category: product.category,
-    //         //     isNewlyAdded: product.isNewlyAdded,
-    //         //     isFeatured: product.isFeatured
-    //         // }));
-
-    //         return singleProductData;
-    
-    //     } catch (error) {
-    //         console.log("Appwrite service :: getsingleProductData :: error", error);
-    //         throw error;
-    //     }
-    // }
     
     async getsingleProductData(id) {
         try {
@@ -363,6 +333,7 @@ export class Config {
                 category: singleProductData.category,
                 isNewlyAdded: singleProductData.isNewlyAdded,
                 isFeatured: singleProductData.isFeatured,
+                stockStatus: singleProductData.stockStatus
             };
     
             return productData;

@@ -11,7 +11,9 @@ const Home = () => {
   return (
     <div>
     <HeroSection />
+    <MarginWrapper >
     <NewArrivals />
+    </MarginWrapper>
      <MarginWrapper >
       <ExploreCollection/>
      </MarginWrapper>

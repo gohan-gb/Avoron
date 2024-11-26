@@ -2,31 +2,11 @@ import React, {useState, useEffect} from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import { FaLongArrowAltLeft } from "react-icons/fa";
 import config from "../../../Backend/Appwrite/config";
 import Button from '../../../components/Button';
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {singleproductFetch} from "../../../Backend/Redux/ProductSlice"
-
-const NextArrow = ({ onClick }) => (
-  <div
-    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-transparent rounded-full p-2 shadow-lg"
-    onClick={onClick}
-  >
-   <FaLongArrowAltRight />
-  </div>
-);
-
-const PrevArrow = ({ onClick }) => (
-  <div
-    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-transparent rounded-full p-2 shadow-lg"
-    onClick={onClick}
-  >
-   <FaLongArrowAltLeft />
-  </div>
-);
 
 const NewArrivals = () => {
   const [newlyAddedProducts, setnewlyAddedProducts] = useState([]);
@@ -53,8 +33,8 @@ const NewArrivals = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    autoplay: true, // Enable auto sliding
+    autoplaySpeed: 3000, // 3 seconds between slides
     responsive: [
       {
         breakpoint: 1024,
@@ -90,14 +70,8 @@ const NewArrivals = () => {
 
   return (
     <div>
-<<<<<<< HEAD
       <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
-      <div className="max-w-8xl mx-auto py-8">
-=======
-      
-      <div className="max-w-8xl mx-auto py-8 bg-olive">
-      <div className="h4 text-center mb-4">New Arrivals</div>
->>>>>>> main
+      <div className="max-w-8xl mx-auto py-8 ">
         <Slider {...settings}>
           {newlyAddedProducts.map((product) => (
             <div key={product.id} className="p-2">

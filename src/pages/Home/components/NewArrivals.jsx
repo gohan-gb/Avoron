@@ -90,18 +90,24 @@ const NewArrivals = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8">
+=======
+      
+      <div className="max-w-8xl mx-auto py-8 bg-olive">
+      <div className="h4 text-center mb-4">New Arrivals</div>
+>>>>>>> main
         <Slider {...settings}>
           {newlyAddedProducts.map((product) => (
             <div key={product.id} className="p-2">
               <div className="flex flex-col items-center justify-center">
                 {/* Image Container */}
-                <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-[400px] flex items-center justify-center">
+                <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-full flex items-center justify-center">
                   <img
                     src={product.images[0]} 
                     alt={product.title} 
-                    className="w-[200px] h-[200px] object-cover mx-auto"
+                    className="w-full h-full object-cover mx-auto"
                   />
                 </div>
 

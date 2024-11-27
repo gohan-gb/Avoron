@@ -122,15 +122,26 @@ const Products = () => {
     const handleMenuBar = () => {
       setMenu(!menu);
     };
-
-    if(loading) {
-      return <div> <MarginWrapper>
-        <div className='mt-64 text-dark text-6xl sm:text-8xl'>
-                    Loading...
-                </div>
-        </MarginWrapper> </div>
+    
+    if (loading) {
+      return (
+        <div className="flex justify-center items-center h-screen bg-gray-100">
+          <MarginWrapper>
+            <div className="flex flex-col items-center">
+              {/* Spinner */}
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75 mb-6"></div>
+              {/* Loading Text */}
+              <div className="mt-4 text-dark text-6xl sm:text-8xl">
+                Loading...
+              </div>
+            </div>
+          </MarginWrapper>
+        </div>
+      );
     }
-
+    
+    
+    
   return (
     <>
       <MarginWrapper>

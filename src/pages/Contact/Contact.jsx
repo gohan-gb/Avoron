@@ -106,6 +106,27 @@ const Contact = () => {
         </div>
       </MarginWrapper>
 
+      <MarginWrapper>
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pt-16 pb-32 ">
+          <section data-aos='fade-right' className="">
+            <h2 className="h3 pb-16"> Our Next Workshop </h2>
+            <h3 className="h4 pb-8"> Find Us Here </h3>
+            <p className="p1">
+              {" "}
+              Stall No. 82, <br /> Darjeeling, West Bengal, 734004{" "}
+            </p>
+          </section>
+          <section >
+            <img
+              data-aos= 'fade-left'
+              className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl"
+              src="https://images.pexels.com/photos/6387695/pexels-photo-6387695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="contact"
+            />
+          </section>
+        </div>
+      </MarginWrapper>
+
       <form onSubmit={handleSubmit} ref={form}>
       <MarginWrapper>
         <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pb-16">
@@ -171,7 +192,7 @@ const Contact = () => {
           </section>
         </div>
       </MarginWrapper>
-    </form>
+      </form>
     </div>
   );
 };

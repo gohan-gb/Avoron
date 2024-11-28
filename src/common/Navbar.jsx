@@ -17,7 +17,7 @@ const Navbar = () => {
       <MarginWrapper>
         <div className="flex justify-between items-center">
           <Link to={'/'}><img
-            src="/assets/avoron_logo_website.svg"
+            src="/assets/Avoron_logo-01.svg"
             className="w-24 "
             alt="logo"
           /></Link>

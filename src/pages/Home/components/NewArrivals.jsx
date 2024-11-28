@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import config from "../../../Backend/Appwrite/config";
-import Button from '../../../components/Button';
+import ButtonTwo from '../../../components/ButtonTwo';
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {singleproductFetch} from "../../../Backend/Redux/ProductSlice"
@@ -96,7 +96,7 @@ const NewArrivals = () => {
                     ? `Discounted: ₹${product.discountedPrice}`
                     : `₹${product.price}`}
                 </div>
-                <div onClick={() => gotosingleProduct(product.id)}><Button  text='Buy this' /></div>
+                <div onClick={() => gotosingleProduct(product.id)}><ButtonTwo  text='Buy this' /></div>
               </div>
             </div>
           ))}

@@ -39,7 +39,7 @@ export default function FeatureProductCarousal() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
-      <div className="relative flex items-center justify-center p-8">
+      <div className="relative flex items-center justify-center pt-8 pb-5 px-5 sm:px-0">
         <AnimatePresence mode="wait">
           {featuredProducts.length > 0 && featuredProducts[currentIndex]?.images?.length > 0 && (
             <motion.div
@@ -48,7 +48,7 @@ export default function FeatureProductCarousal() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-96 md:w-full overflow-hidden rounded-lg shadow-lg"
+              className="relative w-full h-full sm:h-96 md:w-full overflow-hidden rounded-lg shadow-lg"
             >
               <img
                 src={featuredProducts[currentIndex].images[0]} // Use the first image
@@ -67,18 +67,6 @@ export default function FeatureProductCarousal() {
           )}
         </AnimatePresence>
       </div>
-      {/* Pagination indicators */}
-      {/* <div className="flex justify-center mt-4">
-        {featuredProducts.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 mx-1 rounded-full ${
-              index === currentIndex ? "bg-[#C1BF96]" : "bg-gray-300"
-            }`}
-          ></button>
-        ))}
-      </div> */}
     </div>
   );
 }

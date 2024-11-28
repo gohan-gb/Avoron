@@ -17,7 +17,7 @@ const Home = () => {
      <MarginWrapper >
       <ExploreCollection/>
      </MarginWrapper>
-     <FeatureProduct />
+      <FeatureProduct />
      <MySiteMission />
       <MarginWrapper >
         <WeekendSale/>

@@ -45,7 +45,7 @@ const Footer = () => {
       <MarginWrapper>
       <div className=' flex lg:flex-row flex-col lg:justify-between lg:items-center justify-start items-start py-16 px-8'>
         <div>
-          <h2 className='h3 mb-8'>
+          <h2 className='sm:h3 h4  mb-8'>
             Stay Inspired and <br /> Empowered
           </h2>
           <p className='lg:mb-0 mb-12'>

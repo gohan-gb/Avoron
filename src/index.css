@@ -41,7 +41,7 @@ body{
 
 /* scrollbar */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
@@ -53,7 +53,7 @@ body{
 }
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1; 
-}
+} */
 
 /* headings */
 .h1{

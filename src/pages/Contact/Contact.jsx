@@ -95,7 +95,7 @@ const Contact = () => {
 
       <MarginWrapper>
         <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pt-16 pb-32">
-          <section data-aos={isMobile ? "fade-up" : "fade-right"} className="">
+          <section data-aos='fade-up' className="">
             <h2 className="h3 pb-16"> Visit Our Store </h2>
             <h3 className="h4 pb-8"> Find Us Here </h3>
             <p className="p1">
@@ -104,7 +104,7 @@ const Contact = () => {
           </section>
           <section>
             <img
-              data-aos={isMobile ? "fade-up" : "fade-left"}
+              data-aos='fade-up'
               className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl"
               src="https://images.pexels.com/photos/6387695/pexels-photo-6387695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="contact"
@@ -116,14 +116,14 @@ const Contact = () => {
       <form onSubmit={handleSubmit} ref={form}>
         <MarginWrapper>
           <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pb-16">
-            <section data-aos={isMobile ? "fade-up" : "fade-right"}>
+            <section data-aos='fade-up'>
               <h2 className="h3 pb-8">Customer Support</h2>
               <p className="p1">Phone: +33 556505050</p>
               <p className="p1">Email: info@mysite.com</p>
             </section>
 
             <section
-              data-aos={isMobile ? "fade-up" : "fade-in"}
+              data-aos='fade-up'
               className="sm:w-[480px] w-80 flex-col"
             >
               {error && <p className="text-red-500">{error}</p>}

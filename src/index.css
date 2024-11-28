@@ -35,6 +35,25 @@ font-weight: normal;
     @apply bg-background
   }
 }
+body{
+  overflow-x: hidden;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #494949; 
+  border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666; 
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+}
 
 /* headings */
 .h1{

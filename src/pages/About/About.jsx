@@ -8,10 +8,10 @@ const About = () => {
     <div className='mt-24'>
       <div className="bg-darkOlive max-w-full h-auto p-8">
        {/* Heading */}
-      <h1 className="text-[50px] sm:text-[60px] md:text-[90px] lg:text-[150px] xl:text-[150px] text-center text-dark font-bodoni underline">
+      <h1 className="h3 text-center pt-16 pb-16 text-dark font-bodoni">
        Welcome to Avoron</h1>
       {/* Subheading */}
-      <p className="text-xl sm:text-xl md:text-xl lg:text-3xl xl:text-5xl text-center text-dark mt-4 font-bodoni">
+      <p className="p1 text-dark mt-4 font-bodoni">
       We bring to you a great collection of divine goddess items, including intricately designed mukuts, elegant dresses, hair accessories, and sacred god adornments, crafted to elevate your spiritual celebrations.
       </p>
       <div className="flex items-center justify-center mt-8">

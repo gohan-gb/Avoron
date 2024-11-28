@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Aos from "aos";
 
 const FeaturedProduct = () => {
-  const [aosAnimation, setAosAnimation] = useState("fade-left");
+  const [aosAnimation, setAosAnimation] = useState("fade-up");
 
   useEffect(() => {
     // Detect screen width and set the appropriate animation
@@ -15,7 +15,7 @@ const FeaturedProduct = () => {
         setAosAnimation("fade-up");
       } else {
         // Larger screens
-        setAosAnimation("fade-left");
+        setAosAnimation("fade-up");
       }
     };
 

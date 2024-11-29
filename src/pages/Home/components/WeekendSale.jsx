@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import Button from '../../../components/Button'
 import Aos from 'aos';
+import MarginWrapper from '../../../common/MarginWrapper';
 
 const WeekendSale = () => {
 
@@ -13,6 +14,7 @@ const WeekendSale = () => {
   }, []);
   
   return (
+    <MarginWrapper >
     <div className='mt-24'>
       <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px] bg-black rounded-s-xl rounded-e-xl overflow-hidden group">
   <img
@@ -28,6 +30,7 @@ const WeekendSale = () => {
 </div>
 
     </div>
+    </MarginWrapper>
   )
 }
 

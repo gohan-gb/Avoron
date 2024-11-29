@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
     <HeroSection />
-    <MarginWrapper >
+    {/* <MarginWrapper >
     <NewArrivals />
     </MarginWrapper>
      <MarginWrapper >
@@ -21,7 +21,7 @@ const Home = () => {
      <MySiteMission />
       <MarginWrapper >
         <WeekendSale/>
-      </MarginWrapper>
+      </MarginWrapper> */}
       <Testimonial />
     </div>
   )

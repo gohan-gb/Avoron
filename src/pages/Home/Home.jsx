@@ -1,6 +1,5 @@
 import React from 'react'
 import HeroSection from './components/HeroSection'
-import MarginWrapper from '../../common/MarginWrapper'
 import NewArrivals from './components/NewArrivals'
 import ExploreCollection from './components/ExploreCollection'
 import FeatureProduct from './components/FeaturedProduct'

@@ -6,11 +6,21 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const FeaturedProduct = () => {
-  const [aosAnimation, setAosAnimation] = useState("fade-left");
+  const [aosAnimation, setAosAnimation] = useState("fade-up");
 
   useEffect(() => {
     const updateAnimation = () => {
+<<<<<<< HEAD
       setAosAnimation(window.innerWidth <= 768 ? "fade-up" : "fade-left");
+=======
+      if (window.innerWidth <= 768) {
+        // Mobile screens
+        setAosAnimation("fade-up");
+      } else {
+        // Larger screens
+        setAosAnimation("fade-up");
+      }
+>>>>>>> main
     };
 
     updateAnimation(); // Initial check

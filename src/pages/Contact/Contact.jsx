@@ -1,11 +1,9 @@
-import React, {
-  useState,
-  useRef,
-  useEffect
-} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import MarginWrapper from "../../common/MarginWrapper";
 import Aos from "aos";
+import ButtonTwo from "../../components/ButtonTwo";
+
 
 const YOUR_SERVICE_ID = import.meta.env.VITE_YOUR_SERVICE_ID;
 const YOUR_TEMPLATE_ID = import.meta.env.VITE_YOUR_TEMPLATE_ID;
@@ -13,6 +11,7 @@ const YOUR_PUBLIC_ID = import.meta.env.VITE_YOUR_PUBLIC_ID;
 
 const Contact = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [loading, setLoading] = useState(false); // State for loader
 
   useEffect(() => {
     Aos.init({
@@ -22,7 +21,7 @@ const Contact = () => {
     });
 
     const updateScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set breakpoint for mobile (e.g., <= 640px for 'sm')
+      setIsMobile(window.innerWidth <= 768);
     };
 
     updateScreenSize();
@@ -57,6 +56,8 @@ const Contact = () => {
       return;
     }
 
+    setLoading(true); // Show loader
+
     emailjs
       .sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_ID)
       .then(
@@ -72,13 +73,23 @@ const Contact = () => {
         },
         (error) => {
           console.log("Failed! Please try again", error.text);
-          alert("Failed !");
+          alert("Failed to send the message!");
         }
-      );
+      )
+      .finally(() => {
+        setLoading(false); // Hide loader
+      });
   };
 
   return (
-    <div className="text-dark">
+    <div className="text-dark relative">
+      {/* Loader with blurred background */}
+      {loading && (
+        <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50">
+          <CircularProgress color="inherit" size={50} />
+        </div>
+      )}
+
       <div className="bg-darkOlive flex flex-col justify-center items-center pb-16 pt-32">
         <MarginWrapper>
           <div className="flex flex-col justify-center items-center">
@@ -95,7 +106,7 @@ const Contact = () => {
 
       <MarginWrapper>
         <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pt-16 pb-32">
-          <section data-aos={isMobile ? "fade-up" : "fade-right"} className="">
+          <section data-aos="fade-up" className="">
             <h2 className="h3 pb-16"> Visit Our Store </h2>
             <h3 className="h4 pb-8"> Find Us Here </h3>
             <p className="p1">
@@ -104,7 +115,7 @@ const Contact = () => {
           </section>
           <section>
             <img
-              data-aos={isMobile ? "fade-up" : "fade-left"}
+              data-aos="fade-up"
               className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl"
               src="https://images.pexels.com/photos/6387695/pexels-photo-6387695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="contact"
@@ -116,14 +127,14 @@ const Contact = () => {
       <form onSubmit={handleSubmit} ref={form}>
         <MarginWrapper>
           <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pb-16">
-            <section data-aos={isMobile ? "fade-up" : "fade-right"}>
+            <section data-aos="fade-up">
               <h2 className="h3 pb-8">Customer Support</h2>
               <p className="p1">Phone: +33 556505050</p>
               <p className="p1">Email: info@mysite.com</p>
             </section>
 
             <section
-              data-aos={isMobile ? "fade-up" : "fade-in"}
+              data-aos="fade-up"
               className="sm:w-[480px] w-80 flex-col"
             >
               {error && <p className="text-red-500">{error}</p>}
@@ -162,7 +173,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className="mb-8">
                 <label>*Write a Message</label> <br />
                 <textarea
                   className="bg-background w-full h-28 border-b-[1px] border-dark"
@@ -172,12 +183,7 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                className="bg-primary text-black p-2 rounded mt-4"
-              >
-                Send Message
-              </button>
+              <ButtonTwo type="submit" text="Send message" />
             </section>
           </div>
         </MarginWrapper>

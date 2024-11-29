@@ -11,10 +11,10 @@ const Home = () => {
   return (
     <div>
     <HeroSection />
-    {/* <MarginWrapper >
+    <MarginWrapper >
     <NewArrivals />
     </MarginWrapper>
-     <MarginWrapper >
+     {/* <MarginWrapper >
       <ExploreCollection/>
      </MarginWrapper>
       <FeatureProduct />

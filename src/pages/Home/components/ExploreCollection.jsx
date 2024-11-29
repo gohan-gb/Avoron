@@ -4,6 +4,7 @@ import config from '../../../Backend/Appwrite/config';
 import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import Button from '../../../components/Button';
+import MarginWrapper from '../../../common/MarginWrapper';
 
 const ExploreCollection = () => {
   const [categories, setCategories] = useState([]);
@@ -39,6 +40,7 @@ const ExploreCollection = () => {
 
   return (
     <div>
+      <MarginWrapper >
       <div className='mb-8 mt-8 text-center h4'>Explore Collection</div>
         <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 lg:gap-12 mb-24">
 
@@ -93,6 +95,7 @@ const ExploreCollection = () => {
           </div>
           
         </div>
+        </MarginWrapper>
     </div>
   );
 };

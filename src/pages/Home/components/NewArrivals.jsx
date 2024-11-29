@@ -7,6 +7,7 @@ import ButtonTwo from '../../../components/ButtonTwo';
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {singleproductFetch} from "../../../Backend/Redux/ProductSlice"
+import MarginWrapper from '../../../common/MarginWrapper';
 
 const NewArrivals = () => {
   const [newlyAddedProducts, setnewlyAddedProducts] = useState([]);
@@ -70,6 +71,7 @@ const NewArrivals = () => {
 
   return (
     <div>
+      <MarginWrapper >
       <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8 ">
         <Slider {...settings}>
@@ -103,6 +105,7 @@ const NewArrivals = () => {
 
         </Slider>
       </div>
+      </MarginWrapper>
     </div>
   );
 };

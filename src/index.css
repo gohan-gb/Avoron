@@ -35,9 +35,6 @@ font-weight: normal;
     @apply bg-background
   }
 }
-body{
-  overflow-x: hidden;
-}
 
 /* scrollbar */
 

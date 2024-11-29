@@ -70,7 +70,7 @@ const NewArrivals = () => {
   }, [newlyAddedProducts.length]);
 
   return (
-    <div>
+    <div className='w-full overflow-hidden'>
       <MarginWrapper >
       <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
       <div className="max-w-8xl mx-auto py-8 ">

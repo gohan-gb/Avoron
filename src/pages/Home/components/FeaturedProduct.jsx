@@ -22,21 +22,19 @@ const FeaturedProduct = () => {
         <div data-aos='fade-up' className="sm:w-1/2 text-center">
           <h3 className="pb-6 h3">People Love These!</h3>
           <p className="pb-4  hidden sm:block">Our Best Products</p>
-          <div className="mt-4 lg:mt-8 md:mt-6">
+          <div className="mt-4 lg:mt-8 md:mt-6 hidden sm:block">
             <Link to="/products">
               <ButtonTwo text="Shop Now" />
             </Link>
           </div>
         </div>
 
-        {/* Carousel Section */}
         <div data-aos='fade-up' className="sm:w-1/2">
           <FeatureProductCarousal />
         </div>
       </div>
 
-      {/* Mobile Button */}
-      <div className="mt-4 lg:mt-8 md:mt-6 block sm:hidden pb-5">
+      <div className="mt-4 lg:mt-8 md:mt-6 block sm:hidden pb-5 flex justify-center items-center">
         <Link to="/products">
           <ButtonTwo text="Shop Now" />
         </Link>

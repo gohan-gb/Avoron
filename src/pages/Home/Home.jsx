@@ -12,11 +12,11 @@ const Home = () => {
     <div>
       <HeroSection />
       <NewArrivals />
-      <ExploreCollection />
+      {/* <ExploreCollection />
       <FeatureProduct />
       <MySiteMission />
       <WeekendSale />
-      <Testimonial />
+      <Testimonial /> */}
     </div>
   );
 };

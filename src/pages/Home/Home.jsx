@@ -12,6 +12,7 @@ const Home = () => {
     <div>
     <HeroSection />
     <MySiteMission />
+    <FeatureProduct />
     {/* <MarginWrapper >
     <NewArrivals />
     </MarginWrapper>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FileUploadForm from './FileUploadForm';
+import UpdateForm from './UpdateForm'; // Import UpdateProductForm
 import config from './config';
 
 function AdminPanel() {
@@ -9,15 +10,6 @@ function AdminPanel() {
     const handleFormOpen = (formType) => {
         setActiveForm(formType);
     };
-
-    // const FetchProductsforsubCategories = async (category) => {
-    //     try {
-    //         const fetchedProducts = await config.getproductsforsubCategories(category);
-    //         setProducts(fetchedProducts); // Store the fetched products in state
-    //     } catch (error) {
-    //         console.error("Error fetching products:", error);
-    //     }
-    // };
 
     return (
         <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
@@ -30,31 +22,18 @@ function AdminPanel() {
                 >
                     Add Product
                 </button>
-            </div>
-            {/* <div className="space-x-4 mb-8">
                 <button 
-                    className="bg-black text-white font-bold py-2 px-4 rounded"
-                    onClick={() => FetchProductsforsubCategories("women")}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => handleFormOpen('update')}
                 >
-                    Fetch
+                    Update Product
                 </button>
-            </div> */}
+            </div>
 
             <div className="w-full max-w-lg">
                 {activeForm === 'add' && <FileUploadForm />}
+                {activeForm === 'update' && <UpdateForm />}
             </div>
-
-            {/* Displaying the products */}
-            {/* <div className="flex flex-wrap justify-center gap-4 mt-6">
-                {products.map((product, index) => (
-                    <ProductCard 
-                        key={index} 
-                        title={product.title} 
-                        price={product.price} 
-                        image={product.images[0]} // Adjust to your actual image field
-                    />
-                ))}
-            </div> */}
         </div>
     );
 }

@@ -156,16 +156,18 @@ const Products = () => {
                 </li>
               ))}
             </ul>
-            <h3 className="h4 mb-4">Filter by</h3>
-            <ul className="flex flex-col justify-start gap-2">
+            <h3 className="h4 mb-4 w-36">Filter by</h3>
+            <div className="flex flex-col justify-start gap-1 mb-4 w-36">
               <label for="price"> price: </label>
-              <select className="cursor-pointer" onChange={handleSortChange}>
+              <select className="cursor-pointer " onChange={handleSortChange}>
                 <option value="" > Select</option>
                 <option value="ascending"> Lower To Higher</option>
                 <option value="decending"> Higher To Lower</option>
               </select>
               
-            </ul>
+            </div>
+            <ul className="mb-4">Products on Sale</ul>
+            <ul className="mb-4">Featured Products</ul>
           </div>
 
           <div className="w-full sm:w-[75%]">
@@ -226,6 +228,7 @@ const Products = () => {
                     <ProductCard
                       image={item.images[0]}
                       title={item.title}
+                      discountedPrice={item.discountedPrice}
                       price={item.price}
                     />
                   </div>

@@ -36,9 +36,7 @@ font-weight: normal;
   }
 }
 
-/* scrollbar */
-
-/* ::-webkit-scrollbar {
+ ::-webkit-scrollbar {
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
@@ -50,8 +48,17 @@ font-weight: normal;
 }
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1; 
-} */
+} 
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+}
 /* headings */
 .h1{
   @apply font-fraunceus leading-[128px] text-[128px]

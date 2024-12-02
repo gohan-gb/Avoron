@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MarginWrapper from "../../../common/MarginWrapper";
 import { LuIndianRupee } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
 // Import Swiper styles
 import "swiper/css";
@@ -18,7 +18,7 @@ const SingleProduct = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   // const { id } = useParams();
-  const singleProduct  = useSelector((state) => state.product.singleproductdata)
+  const singleProduct = useSelector((state) => state.product.singleproductdata);
 
   // const singleProduct = data.find((product) => product.id == id);
 
@@ -38,7 +38,7 @@ const SingleProduct = () => {
   const handleWhatsapp = () => {
     const message = `avoron.in Please order ${quantity} of ${singleProduct.title} for me `;
 
-    const whatsappUrl = `https://wa.me/+48794231051?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/+919851375776?text=${encodeURIComponent(
       message
     )}`;
 
@@ -93,10 +93,32 @@ const SingleProduct = () => {
                 {singleProduct.description}{" "}
               </p>
 
-              <h3 className="text-dark mb-8 p1 flex">
+              {singleProduct.discountedPrice ? (
+                <>
+                 <div className="flex flex-col mb-8 text-dark gap-2">
+                 <div className="flex gap-4">
+                 <h3 className="text-dark  p1 flex">
+                    {" "}
+                    ₹ {singleProduct.discountedPrice}
+                  </h3>
+                  <s className="p1"> {singleProduct.price} </s> 
+                 </div>
+                 <p className="text-xl text-blue-500"> On sale !!!</p>
+                 </div>
+                 
+                </>
+              ) : (
+                <>
+                  <h3 className="text-dark mb-8 p1 flex">
+                    {" "}
+                    ₹ {singleProduct.price}
+                  </h3>
+                </>
+              )}
+              {/* <h3 className="text-dark mb-8 p1 flex">
                 {" "}
-                <LuIndianRupee /> {singleProduct.price}{" "}
-              </h3>
+                ₹ {singleProduct.price}{" "}
+              </h3> */}
               <label className="text-dark mb-2" htmlFor="">
                 Quantity
               </label>

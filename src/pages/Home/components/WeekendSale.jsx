@@ -14,7 +14,7 @@ const WeekendSale = () => {
   }, []);
   
   return (
-    <div className='w-full'>
+    <div className='w-full overflow-hidden'>
     <MarginWrapper >
     <div className='mt-24'>
       <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px] bg-black rounded-s-xl rounded-e-xl overflow-hidden group">

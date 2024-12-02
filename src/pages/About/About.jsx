@@ -5,22 +5,41 @@ import AboutCarousal from './AboutCarousal'
 const About = () => {
 
   return (
-    <div className='mt-24 text-dark'>
-      <div className="bg-darkOlive max-w-full h-auto p-8 flex flex-col justify-center items-center">
-        <h1 className="h3 text-center pt-16 pb-16">
-        Welcome to Avoron</h1>
-        <p className="text-center p1 pb-16 sm:w-[50%] w-[75%]">
-        We bring to you a great collection of divine goddess items, 
-        including intricately designed mukuts, elegant dresses, hair 
-        accessories, and sacred god adornments, crafted to elevate your 
-        spiritual celebrations.
-        </p>
-        <div className="flex items-center justify-center mt-8">
-        <AboutCarousal />
-        </div>       
+    <div className='mt-24'>
+      <div className="bg-darkOlive max-w-full h-auto p-8 ">
+       {/* Heading */}
+      <h1 className="h3 text-center pt-16 pb-16 text-dark font-fraunceus">
+       Welcome to Avoron</h1>
+      {/* Subheading */}
+      <p className="p1 text-dark mt-4 font-fraunceus ">
+      We bring to you a great collection of divine goddess items, including intricately designed mukuts, elegant dresses, hair accessories, and sacred god adornments, crafted to elevate your spiritual celebrations.
+      </p>
+      <div className="flex items-center justify-center mt-8">
+      {/* <img
+      src="https://images.unsplash.com/photo-1590650265179-7e13941e93f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="women empowerment"
+      className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl xl:max-w-4xl h-auto rounded-s-xl rounded-e-xl object-cover" /> */}
+      <AboutCarousal />
       </div>
 
-     <div>
+      {/* <h4 className="text-dark text-center mt-8 font-bodoni text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed sm:leading-normal md:leading-loose">
+       My Site is an ecommerce website dedicated to offering a <br /> 
+       wide range of goddess items such as dresses, hair <br />
+        accessories, and more. We believe that every product we <br />
+        offer can make a woman feel empowered and beautiful. Our <br />
+        collection is carefully curated to bring you the best in <br />
+        goddess fashion and style.
+       </h4> */}
+       
+       <p className="text-center text-dark font-thin my-12 text-sm sm:text-base md:text-sm lg:text-sm xl:text-sm leading-relaxed sm:leading-normal md:leading-loose">
+       At Avoron, we are passionate about providing a platform for women to express their unique style. <br />
+       Our mission is to offer a diverse range of products that are not only fashionable but also <br />
+       sustainable and ethically sourced. We are committed to promoting eco-friendly practices and <br />
+        supporting women-owned businesses to make a positive impact on the planet and the community.
+       </p>
+     </div>
+
+     <div className='overflow-hidden'>
       <AnimatedImage />
      </div>
 

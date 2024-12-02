@@ -44,7 +44,7 @@ const About = () => {
      </div>
 
      <div className='my-12'>
-     <p className="text-center font-bodoni text-dark mt-8 text-6xl ">  Bring Avoron at Your Home</p>
+     <p className="text-center h3 text-dark mt-8 text-6xl ">  Bring Avoron at Your Home</p>
      </div>
 
       <section className="flex flex-col md:flex-row justify-center gap-12 md:gap-16 lg:gap-24 xl:gap-32 items-center px-4 md:px-8 lg:px-12 py-12">

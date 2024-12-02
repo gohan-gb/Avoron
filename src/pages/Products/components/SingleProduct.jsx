@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import MarginWrapper from "../../../common/MarginWrapper";
-import Button from "../../../components/Button";
-import { useParams } from "react-router-dom";
 import { LuIndianRupee } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelector } from 'react-redux'

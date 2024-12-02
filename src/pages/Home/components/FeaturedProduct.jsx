@@ -30,7 +30,7 @@ const FeaturedProduct = () => {
         </div>
 
         {/* Carousel Section */}
-        <div data-aos='fade-up' className="sm:w-1/2">
+        <div data-aos='fade-up' >
           <FeatureProductCarousal />
         </div>
       </div>

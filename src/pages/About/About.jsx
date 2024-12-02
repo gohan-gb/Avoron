@@ -6,12 +6,12 @@ const About = () => {
 
   return (
     <div className='mt-24'>
-      <div className="bg-darkOlive max-w-full h-auto p-8">
+      <div className="bg-darkOlive max-w-full h-auto p-8 ">
        {/* Heading */}
-      <h1 className="h3 text-center pt-16 pb-16 text-dark font-bodoni">
+      <h1 className="h3 text-center pt-16 pb-16 text-dark font-fraunceus">
        Welcome to Avoron</h1>
       {/* Subheading */}
-      <p className="p1 text-dark mt-4 font-bodoni">
+      <p className="p1 text-dark mt-4 font-fraunceus ">
       We bring to you a great collection of divine goddess items, including intricately designed mukuts, elegant dresses, hair accessories, and sacred god adornments, crafted to elevate your spiritual celebrations.
       </p>
       <div className="flex items-center justify-center mt-8">
@@ -39,7 +39,7 @@ const About = () => {
        </p>
      </div>
 
-     <div>
+     <div className='overflow-hidden'>
       <AnimatedImage />
      </div>
 

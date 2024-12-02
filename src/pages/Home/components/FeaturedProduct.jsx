@@ -34,7 +34,7 @@ const FeaturedProduct = () => {
         </div>
       </div>
 
-      <div className="mt-4 lg:mt-8 md:mt-6 block sm:hidden pb-5 flex justify-center items-center">
+      <div className="mt-4 lg:mt-8 md:mt-6  sm:hidden pb-5 flex justify-center items-center">
         <Link to="/products">
           <ButtonTwo text="Shop Now" />
         </Link>

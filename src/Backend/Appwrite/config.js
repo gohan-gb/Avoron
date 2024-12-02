@@ -92,7 +92,7 @@ export class Config {
             console.log("Appwrite service :: uploadFileWithCategory :: error", error);
             throw error;
         }
-    }
+    };
 
     async getProductsForCategories(category) {
         try {
@@ -134,7 +134,7 @@ export class Config {
             console.log("Appwrite service :: getProductsForCategories :: error", error);
             throw error;
         }
-    }
+    };
     
     async getProducts(categoryName, category) {
         try {
@@ -174,7 +174,7 @@ export class Config {
             console.log("Appwrite service :: getProducts :: error", error);
             throw error;
         }
-    }
+    };
 
     async getfeaturedProducts() {
         try {
@@ -214,7 +214,7 @@ export class Config {
             console.log("Appwrite service :: getfeaturedProducts :: error", error);
             throw error;
         }
-    }
+    };
 
     async getnewlyAddedProducts() {
         try {
@@ -254,7 +254,7 @@ export class Config {
             console.log("Appwrite service :: getfeaturedProducts :: error", error);
             throw error;
         }
-    }
+    };
 
     async getallProducts() {
         try {
@@ -293,7 +293,7 @@ export class Config {
             console.log("Appwrite service :: getallProducts :: error", error);
             throw error;
         }
-    }
+    };
 
     async getAllCategories() {
         try {
@@ -307,11 +307,10 @@ export class Config {
             console.log("Appwrite service :: getAllCategories :: error", error);
             throw error;
         }
-    }
+    };
     
     async getsingleProductData(id) {
         try {
-            // Fetch the single product document
             const singleProductData = await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -342,7 +341,7 @@ export class Config {
             console.log("Appwrite service :: getsingleProductData :: error", error);
             throw error;
         }
-    }
+    };
     
 
     async getFile (fileId) {
@@ -353,7 +352,53 @@ export class Config {
             console.log("Appwrite serive :: getFile :: error", error);
             throw error; 
         }
+    };
+
+    async updateDocument(documentId, title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus) {
+        try {
+            const updatedDocument = await this.databases.updateDocument(
+                conf.appwriteDatabaseId, 
+                conf.appwriteCollectionId, 
+                documentId, 
+                {
+                    title: title,
+                    price: price,
+                    discountOption: discountOption,
+                    discPrice: discPrice,
+                    images: images,
+                    description: description,
+                    category: category,
+                    isNewlyAdded: isNewlyAdded,
+                    isFeatured: isFeatured,
+                    stockStatus: stockStatus
+                }
+            );
+    
+            // console.log("Document updated successfully:", updatedDocument);
+            return updatedDocument;
+        } catch (error) {
+            console.log("Appwrite service :: updateDocument :: error", error);
+            throw error;
+        }
     }
+
+    async getDocumenttoUpdate(documentId) {
+        try {
+            const Document = await this.databases.getDocument(
+                conf.appwriteDatabaseId, 
+                conf.appwriteCollectionId, 
+                documentId, 
+            );
+    
+            // console.log("Document fetched successfully:", Document);
+            return Document;
+        } catch (error) {
+            console.log("Appwrite service :: getDocumenttoUpdate :: error", error);
+            throw error;
+        }
+    }
+    
+
 }
 
 const config = new Config ();

@@ -94,7 +94,7 @@ const Products = () => {
         const singleproductdata = await config.getsingleProductData (stringid)
         if (singleproductdata) {
           dispatch(singleproductFetch(singleproductdata)); 
-          navigate(`/products/${id}`)
+          navigate(`/products/${singleproductdata.title}`)
         }
       } catch (error) {
         console.log(error);

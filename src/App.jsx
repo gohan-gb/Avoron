@@ -22,10 +22,10 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/hindu-god-decoration-items/collections" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products/:title" element={<SingleProduct />} />
+        <Route path="/hindu-god-decoration-items/:category/:title/:id" element={<SingleProduct />} />
         <Route path="/admin-panel" element={<Adminpanel />} />
       </Routes>
      </main>

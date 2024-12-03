@@ -33,7 +33,6 @@ const Footer = () => {
       const productsdata = await config.getProducts(category, fetchedCategory)
       dispatch(productFetch(productsdata));
       navigate("/products", { state: { categoryName: fetchedCategory } });
-
     } catch (error) {
       console.log(error);
     }
@@ -71,8 +70,6 @@ const Footer = () => {
                   {category}
                 </li>
           ))}
-          <li className='cursor-pointer'>Sale</li>
-          <li className='cursor-pointer'>Featured Products</li>
         </ul>
         </div>
         <div className='block sm:hidden'>

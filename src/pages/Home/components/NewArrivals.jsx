@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { singleproductFetch } from "../../../Backend/Redux/ProductSlice";
 import MarginWrapper from "../../../common/MarginWrapper";
+import slugify from 'slugify';
 
 const NewArrivals = () => {
   const [newlyAddedProducts, setNewlyAddedProducts] = useState([]);
@@ -16,15 +17,18 @@ const NewArrivals = () => {
 
   const gotosingleProduct = async (id) => {
     try {
-      const singleProductData = await config.getsingleProductData(String(id));
-      if (singleProductData) {
-        dispatch(singleproductFetch(singleProductData));
-        navigate(`/products/${id}`);
+      const stringid = String(id)
+      const singleproductdata = await config.getsingleProductData (stringid)
+      if (singleproductdata) {
+        const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
+        dispatch(singleproductFetch(singleproductdata)); 
+        navigate(`/hindu-god-decoration-items/${singleproductdata.category}/${slug}/${id}`)
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      
     }
-  };
+  }
 
   const settings = {
     dots: false,
@@ -79,7 +83,8 @@ const NewArrivals = () => {
               <div key={product.id} className="p-4">
                 <div className="flex flex-col items-center">
                   {/* Image Container */}
-                  <div className="w-full h-96 bg-olive rounded-2xl overflow-hidden">
+                  <div className="w-full h-96 bg-olive rounded-2xl overflow-hidden"
+                  onClick={() => {gotosingleProduct(product.id)}}>
                     <img
                       src={product.images[0]}
                       alt={product.title}

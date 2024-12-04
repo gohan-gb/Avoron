@@ -11,7 +11,8 @@ const YOUR_PUBLIC_ID = import.meta.env.VITE_YOUR_PUBLIC_ID;
 
 const Contact = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [loading, setLoading] = useState(false); // State for loader
+  // const [loading, setLoading] = useState(false);
+   // State for loader
 
   useEffect(() => {
     Aos.init({
@@ -56,7 +57,8 @@ const Contact = () => {
       return;
     }
 
-    setLoading(true); // Show loader
+    // setLoading(true); 
+    // Show loader
 
     emailjs
       .sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_ID)
@@ -76,19 +78,19 @@ const Contact = () => {
           alert("Failed to send the message!");
         }
       )
-      .finally(() => {
-        setLoading(false); // Hide loader
-      });
+      // .finally(() => {
+      //   setLoading(false); // Hide loader
+      // });
   };
 
   return (
     <div className="text-dark relative">
       {/* Loader with blurred background */}
-      {loading && (
+      {/* {loading && (
         <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50">
           <CircularProgress color="inherit" size={50} />
         </div>
-      )}
+      )} */}
 
       <div className="bg-darkOlive flex flex-col justify-center items-center pb-16 pt-32">
         <MarginWrapper>

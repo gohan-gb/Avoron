@@ -30,10 +30,10 @@ const HeroSection = () => {
         </p>
 
         <div className="mt-6 sm:mt-8 lg:mt-8 md:mt-8 mb-20 sm:mb-2 md:mb-1 lg:mb-1 xl:mb-1">
-  <Link to="/products">
-    <Button text="View Products" />
-  </Link>
-</div>
+          <Link to="/products">
+          <Button text="View Products" />
+         </Link>
+        </div>
 
       </div>
     </div>

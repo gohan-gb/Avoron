@@ -1,26 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import config from "../../../Backend/Appwrite/config";
-import ButtonTwo from '../../../components/ButtonTwo';
-import {useNavigate} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import {singleproductFetch} from "../../../Backend/Redux/ProductSlice"
-import MarginWrapper from '../../../common/MarginWrapper';
+import ButtonTwo from "../../../components/ButtonTwo";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { singleproductFetch } from "../../../Backend/Redux/ProductSlice";
+import MarginWrapper from "../../../common/MarginWrapper";
+import slugify from 'slugify';
 
 const NewArrivals = () => {
-  const [newlyAddedProducts, setnewlyAddedProducts] = useState([]);
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const [newlyAddedProducts, setNewlyAddedProducts] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const gotosingleProduct = async (id) => {
     try {
       const stringid = String(id)
       const singleproductdata = await config.getsingleProductData (stringid)
       if (singleproductdata) {
+        const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
         dispatch(singleproductFetch(singleproductdata)); 
-        navigate(`/products/${id}`)
+        navigate(`/hindu-god-decoration-items/${singleproductdata.category}/${slug}/${id}`)
       }
     } catch (error) {
       console.log(error);
@@ -29,13 +31,13 @@ const NewArrivals = () => {
   }
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true, // Enable auto sliding
-    autoplaySpeed: 3000, // 3 seconds between slides
+    autoplay: true,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1024,
@@ -52,11 +54,11 @@ const NewArrivals = () => {
     ],
   };
 
-  const getnewlyAddedProducts = async () => {
+  const getNewlyAddedProducts = async () => {
     try {
-      const productsdata = await config.getnewlyAddedProducts();
-      if (productsdata && productsdata.length > 0) {
-        setnewlyAddedProducts(productsdata);
+      const productsData = await config.getnewlyAddedProducts();
+      if (productsData && productsData.length > 0) {
+        setNewlyAddedProducts(productsData);
       } else {
         console.error("Error: No products data received");
       }
@@ -66,45 +68,52 @@ const NewArrivals = () => {
   };
 
   useEffect(() => {
-    getnewlyAddedProducts();
-  }, [newlyAddedProducts.length]);
+    getNewlyAddedProducts();
+  }, []);
 
   return (
-    <div className='w-full overflow-hidden'>
-      <MarginWrapper >
-      <div className="h4 text-center mt-20 sm:mt-36 md:mt-36 lg:mt-48 xl:mt-52">New Arrivals</div>
-      <div className="max-w-8xl mx-auto py-8 ">
-        <Slider {...settings}>
-          {newlyAddedProducts.map((product) => (
-            <div key={product.id} className="p-2">
-              <div className="flex flex-col items-center justify-center">
-                {/* Image Container */}
-                <div className="bg-olive outline-none rounded-s-2xl rounded-e-2xl overflow-hidden w-full h-full flex items-center justify-center">
-                  <img
-                    src={product.images[0]} 
-                    alt={product.title} 
-                    className="w-full h-full object-cover mx-auto"
-                  />
-                </div>
+    <div className="w-full overflow-hidden">
+      <MarginWrapper>
+        <div className="h4 text-center mt-20 sm:mt-24 md:mt-28 lg:mt-36 xl:mt-44 ">
+          New Arrivals
+        </div>
+        <div className="max-w-8xl mx-auto py-8">
+          <Slider {...settings}>
+            {newlyAddedProducts.map((product) => (
+              <div key={product.id} className="p-4">
+                <div className="flex flex-col items-center">
+                  {/* Image Container */}
+                  <div className="w-full h-96 bg-olive rounded-2xl overflow-hidden"
+                  onClick={() => {gotosingleProduct(product.id)}}>
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                {/* Product Title */}
-                <div className="text-center mb-1 text-lg font-light text-gray-700">
-                  {product.title}
+                  {/* Product Details */}
+                  <div className="mt-4 flex flex-col items-center justify-between min-h-[100px] w-full">
+                    <div className="text-lg font-medium text-gray-800 text-center line-clamp-2">
+                      {product.title}
+                    </div>
+                    <div className="text-base font-light text-gray-700 mt-2">
+                      {product.isDiscount === "yes" && product.discountedPrice
+                        ? `Discounted: ₹${product.discountedPrice}`
+                        : `₹${product.price}`}
+                    </div>
+                    {/* <div className="mt-4">
+                      <ButtonTwo
+                        text="Buy this"
+                        onClick={() => gotosingleProduct(product.id)}
+                      />
+                    </div> */}
+                  </div>
                 </div>
-
-                {/* Product Price */}
-                <div className="text-center mb-1 text-base font-light text-gray-700">
-                  {product.isDiscount === "yes" && product.discountedPrice 
-                    ? `Discounted: ₹${product.discountedPrice}`
-                    : `₹${product.price}`}
-                </div>
-                <div onClick={() => gotosingleProduct(product.id)}><ButtonTwo  text='Buy this' /></div>
               </div>
-            </div>
-          ))}
-
-        </Slider>
-      </div>
+            ))}
+          </Slider>
+        </div>
       </MarginWrapper>
     </div>
   );

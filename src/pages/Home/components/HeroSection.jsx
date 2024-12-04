@@ -20,17 +20,20 @@ const HeroSection = () => {
         <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl font-bold text-yellow1 mt-20 mb-2">
           Avoron
         </h1>
-        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-yellow2 mt-2">
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-yellow2 mt-2 sm:mt-4">
           Adorn the Divine with Avoron – where grace meets craftsmanship
         </h2>
-        <p className="text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl text-light max-w-3xl mx-auto break-words mt-2">
-          Shop our premium selection of goddess hair, dresses, temple swings, <br className="hidden md:block" /> and traditional accessories to enrich your devotional space with elegance.
+        <p className="hidden sm:block text-base md:text-lg lg:text-xl xl:text-2xl text-light max-w-3xl mx-auto break-words mt-2">
+          Shop our premium selection of goddess hair, dresses, temple swings,
+          <br className="hidden md:block" />
+          and traditional accessories to enrich your devotional space with elegance.
         </p>
         <div className="mt-4 lg:mt-8 md:mt-6">
-          <Link to="/products">
+          <Link to="/hindu-god-decoration-items/collections">
             <Button text="Explore More" />
           </Link>
         </div>
+
       </div>
     </div>
   );

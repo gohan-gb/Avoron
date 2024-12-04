@@ -9,8 +9,7 @@ const HeroSection = () => {
       <div
   className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-50 opacity-90 rounded-lg h-[500px] sm:h-[600px] md:h-[500px] lg:h-[700px] xl:h-[700px]"
   style={{
-    backgroundImage:
-      "url('https://images.unsplash.com/photo-1659727640714-7e9a1d8b31cb?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+    backgroundImage: "url('assets/hero.webp')",
     backgroundAttachment: "fixed",
   }}
 ></div>

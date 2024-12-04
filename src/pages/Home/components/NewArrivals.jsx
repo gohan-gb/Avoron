@@ -88,8 +88,8 @@ const NewArrivals = () => {
                   </div>
 
                   {/* Product Details */}
-                  <div className="mt-4 flex flex-col items-center justify-between min-h-[200px] w-full">
-                    <div className="text-lg font-medium text-gray-800 text-center">
+                  <div className="mt-4 flex flex-col items-center justify-between min-h-[100px] w-full">
+                    <div className="text-lg font-medium text-gray-800 text-center line-clamp-2">
                       {product.title}
                     </div>
                     <div className="text-base font-light text-gray-700 mt-2">
@@ -97,12 +97,12 @@ const NewArrivals = () => {
                         ? `Discounted: ₹${product.discountedPrice}`
                         : `₹${product.price}`}
                     </div>
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <ButtonTwo
                         text="Buy this"
                         onClick={() => gotosingleProduct(product.id)}
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

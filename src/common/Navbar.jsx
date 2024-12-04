@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="flex justify-between mt-8">
             <ul onClick={handleNavbar} className="h3 flex flex-col gap-6 mt-24 ">
               <Link to={'/'}><li className="cursor-pointer">Home</li></Link>
-              <Link to={'products'}><li className="cursor-pointer">Shop All</li></Link>
+              <Link to={'/hindu-god-decoration-items/collections'}><li className="cursor-pointer">Shop All</li></Link>
               <Link to={'about'}><li className="cursor-pointer">About Us</li></Link>
               <Link to={'contact'}><li className="cursor-pointer">Contact</li></Link>
             </ul>

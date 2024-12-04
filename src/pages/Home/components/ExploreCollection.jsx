@@ -35,8 +35,7 @@ const ExploreCollection = () => {
     try {
       const productsdata = await config.getProducts(category, fetchedCategory)
       dispatch(productFetch(productsdata));
-      navigate("/products", { state: { categoryName: fetchedCategory } });
-
+      navigate("/hindu-god-decoration-items/collections", { state: { categoryName: fetchedCategory } });
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +47,7 @@ const ExploreCollection = () => {
       <div className='mb-8 mt-8 text-center h4'>Explore Collection</div>
         <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 lg:gap-12 mb-24">
 
-          <div className="relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
+          <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
           onClick={() => getProductsforthiscategory("category", categories[0])}>
             <img
               src={pic2}
@@ -64,8 +63,8 @@ const ExploreCollection = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
-          onClick={() => getProductsforthiscategory("category", categories[2])}>
+          <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
+          onClick={() => getProductsforthiscategory("category", categories[1])}>
             <img
               src={pic1}
               alt="Accessory"
@@ -76,13 +75,13 @@ const ExploreCollection = () => {
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
-            onClick={() => getProductsforthiscategory("category", categories[2])}>
+            onClick={() => getProductsforthiscategory("category", categories[1])}>
               <Button  text='Explore More' />
             </div>
           </div>
 
-          <div className="relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
-          onClick={() => getProductsforthiscategory("category", categories[1])}>
+          <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
+          onClick={() => getProductsforthiscategory("category", categories[2])}>
             <img
               src={pic3}
               alt="sarees"
@@ -93,7 +92,7 @@ const ExploreCollection = () => {
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
-            onClick={() => getProductsforthiscategory("category", categories[1])}>
+            onClick={() => getProductsforthiscategory("category", categories[2])}>
               <Button  text='Explore More'/>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import Button from '../../../components/Button'
 import Aos from 'aos';
 import MarginWrapper from '../../../common/MarginWrapper';
+import { Link } from "react-router-dom";
 
 const WeekendSale = () => {
 
@@ -26,7 +27,9 @@ const WeekendSale = () => {
   <div data-aos='fade-in' className="absolute inset-0 flex flex-col items-center justify-center text-center text-wrap px-5">
     <h2 className="h4 text-light">Happening Now !!</h2>
     <h1  className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl mt-8 mb-8 text-yellow2">Weekend Sale</h1>
-    <Button text="Shop Now" />
+    <Link to="/hindu-god-decoration-items/collections">
+      <Button text="Shop Now" />
+    </Link>
   </div>
 </div>
 

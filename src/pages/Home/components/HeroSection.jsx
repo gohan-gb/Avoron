@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <div className="relative pt-24">
+    <div className="relative pt-28">
       {/* Fixed Background */}
       <div
   className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-50 opacity-90 rounded-lg h-[500px] sm:h-[600px] md:h-[500px] lg:h-[700px] xl:h-[700px]"
   style={{
-    backgroundImage: "url('assets/hero.webp')",
+    backgroundImage: "url('assets/krishna3.webp')",
     backgroundAttachment: "fixed",
   }}
 ></div>
@@ -17,7 +17,7 @@ const HeroSection = () => {
 
       {/* Text Content */}
       <div className="relative flex flex-col justify-center items-center text-center px-6 max-w-full">
-        <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl font-bold text-yellow1 mt-20 mb-2">
+        <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl font-fraunceus text-yellow1 mt-28 mb-2">
           Avoron
         </h1>
         <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-yellow2 mt-2 sm:mt-4">

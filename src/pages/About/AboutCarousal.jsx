@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
   {
-    src: "https://picsum.photos/id/237/200/300",
+    src: "assets/krishna1.webp",
     text: "Experience Luxury",
   },
   {
-    src: "https://picsum.photos/id/238/200/300",
+    src: "assets/krishna2.webp",
     text: "Find Your Adventure",
   },
   {
-    src: "https://picsum.photos/id/239/200/300",
+    src: "assets/krishna3.webp",
     text: "Create Lasting Memories",
   },
 ];

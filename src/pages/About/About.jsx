@@ -30,11 +30,11 @@ const About = () => {
         </MarginWrapper>
       </div>
       <div className="flex items-center justify-center mt-8">
-      {/* <img
-      src="https://images.unsplash.com/photo-1590650265179-7e13941e93f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+       <img
+      src="/assets/krishna3.webp"
       alt="women empowerment"
-      className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl xl:max-w-4xl h-auto rounded-s-xl rounded-e-xl object-cover" /> */}
-      <AboutCarousal />
+      className="w-full h-1/2 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl xl:max-w-4xl  rounded-s-xl rounded-e-xl object-cover" /> 
+      {/* <AboutCarousal /> */}
       </div>
 
       {/* <h4 className="text-dark text-center mt-8 font-bodoni text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed sm:leading-normal md:leading-loose">

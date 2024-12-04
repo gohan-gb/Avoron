@@ -54,7 +54,7 @@ const Footer = () => {
         <div className='flex justify-between items-start sm:gap-24 sm:w-auto w-full mb-8'>
         <ul className='flex flex-col gap-3'>
           <Link to={'/'}><li className='cursor-pointer'>Home</li></Link>
-          <Link to={'/products'}><li className='cursor-pointer'>Shop All</li></Link>
+          <Link to={'/hindu-god-decoration-items/collections'}><li className='cursor-pointer'>Shop All</li></Link>
           <Link to={'/about'}><li className='cursor-pointer'>Our mission</li></Link>
           <Link to={'/contact'}><li className='cursor-pointer'>Contact</li></Link>
           <Link to={'/'}><li className='cursor-pointer'>Return Policy</li></Link>

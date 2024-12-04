@@ -1,19 +1,34 @@
 import React from 'react'
 import AnimatedImage from './AnimateImage'
 import AboutCarousal from './AboutCarousal'
+import MarginWrapper from '../../common/MarginWrapper'
 
 const About = () => {
 
   return (
     <div className='mt-24'>
       <div className="bg-darkOlive max-w-full h-auto p-8 ">
-       {/* Heading */}
-      <h1 className="h3 text-center pt-16 pb-16 text-dark font-fraunceus">
+      {/* <h1 className="h3 text-center pt-16 pb-16 text-dark font-fraunceus">
        Welcome to Avoron</h1>
-      {/* Subheading */}
-      <p className="p1 text-dark mt-4 font-fraunceus ">
-      We bring to you a great collection of divine goddess items, including intricately designed mukuts, elegant dresses, hair accessories, and sacred god adornments, crafted to elevate your spiritual celebrations.
-      </p>
+      <p className="text-center text-dark p1 pb-16 w-full">
+        We are dedicated to providing exceptional customer service.
+        Whether you have a question, need assistance, or just want to say
+        hello, we're here for you. Reach out to us via email, live chat,
+        or phone – we'd love to hear from you.
+      </p> */}
+      <div className="bg-darkOlive flex flex-col justify-center items-center pb-16 text-dark">
+        <MarginWrapper>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="h3 text-center pt-16 pb-16">Welcome to Avoron</h1>
+            <p className="text-center p1 pb-16 w-[75%] sm:w-[50%]">
+            We are dedicated to providing exceptional customer service.
+            Whether you have a question, need assistance, or just want to say
+            hello, we're here for you. Reach out to us via email, live chat,
+            or phone – we'd love to hear from you.
+            </p>
+          </div>
+        </MarginWrapper>
+      </div>
       <div className="flex items-center justify-center mt-8">
       {/* <img
       src="https://images.unsplash.com/photo-1590650265179-7e13941e93f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

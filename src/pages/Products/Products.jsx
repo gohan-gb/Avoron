@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import Aos from "aos";
 import "aos/dist/aos.css";
+import slugify from 'slugify';
 
 const Products = () => {
 
@@ -49,21 +50,37 @@ const Products = () => {
       fetchCategories();
     }, []);
     
-    const getProductsforthiscategory = async (category, fetchedCategory) => {
+    // const getProductsforthiscategory = async (category, fetchedCategory) => {
+    //   try {
+    //     setLoading(true)
+    //     const productsdata = await config.getProducts(category, fetchedCategory)
+    //     if (productsdata) {
+    //       dispatch(productFetch(productsdata));
+    //       setCategoryName(fetchedCategory)
+    //       setLoading(false)
+    //     } else {
+    //       console.log(error);
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+
+    const getProductsforthiscategory = async (category, fetchedCategory, displayName = fetchedCategory ) => {
       try {
-        setLoading(true)
-        const productsdata = await config.getProducts(category, fetchedCategory)
+        setLoading(true);
+        const productsdata = await config.getProducts(category, fetchedCategory);
         if (productsdata) {
           dispatch(productFetch(productsdata));
-          setCategoryName(fetchedCategory)
-          setLoading(false)
+          setCategoryName(displayName); // Set the display name
+          setLoading(false);
         } else {
           console.log(error);
         }
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     const getAllProducts = async () => {
       try {
@@ -93,8 +110,9 @@ const Products = () => {
         const stringid = String(id)
         const singleproductdata = await config.getsingleProductData (stringid)
         if (singleproductdata) {
+          const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
           dispatch(singleproductFetch(singleproductdata)); 
-          navigate(`/products/${singleproductdata.title}`)
+          navigate(`/hindu-god-decoration-items/${singleproductdata.category}/${slug}/${id}`)
         }
       } catch (error) {
         console.log(error);
@@ -166,8 +184,8 @@ const Products = () => {
               </select>
               
             </div>
-            <ul className="mb-4">Products on Sale</ul>
-            <ul className="mb-4">Featured Products</ul>
+            <ul className="mb-4 cursor-pointer" onClick={() => getProductsforthiscategory("discountOption", "yes", "Sale")}>Products on Sale</ul>
+            <ul className="mb-4 cursor-pointer" onClick={() => getProductsforthiscategory("isFeatured", "yes", "Our Best Products")}>Featured Products</ul>
           </div>
 
           <div className="w-full sm:w-[75%]">

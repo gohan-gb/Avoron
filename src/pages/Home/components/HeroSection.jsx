@@ -28,9 +28,9 @@ const HeroSection = () => {
           <br className="hidden md:block" />
           and traditional accessories to enrich your devotional space with elegance.
         </p>
-        <div className="mt-4 lg:mt-8 md:mt-6">
+        <div className="mt-4 lg:mt-8 md:mt-6  mb-24 sm:mb-6 md:mb-8 lg:mb-2 xl:mb-2">
           <Link to="/hindu-god-decoration-items/collections">
-            <Button text="Explore More" />
+            <Button text="View Shop" />
           </Link>
         </div>
 

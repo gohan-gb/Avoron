@@ -50,11 +50,12 @@ export default function FeatureProductCarousal() {
               transition={{ duration: 0.5 }}
               className="relative w-full h-full sm:h-96 md:w-full overflow-hidden rounded-lg shadow-lg"
             >
-              <img
-                src={featuredProducts[currentIndex].images[0]} // Use the first image
-                alt={featuredProducts[currentIndex].title || "Product Image"}
-                className="w-full h-full object-cover"
-              />
+             <img
+             src={featuredProducts[currentIndex].images[0]} // Use the first image
+             alt={featuredProducts[currentIndex].title || "Product Image"}
+             className="w-[500px] sm:w-[300px] md:w-[400px] lg:w-[500px] xl:w-[500px] h-[300px] 
+             sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[500px] object-cover"/>
+
               {/* <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center p-6 text-center">
                 <h2 className="h4 mb-2 text-[#C1BF96]">
                   {featuredProducts[currentIndex].title}

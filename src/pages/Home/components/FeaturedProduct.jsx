@@ -4,7 +4,7 @@ import ButtonTwo from "../../../components/ButtonTwo";
 import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-
+import MarginWrapper from "../../../common/MarginWrapper";
 const FeaturedProduct = () => {
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const FeaturedProduct = () => {
 
   return (
     <div className="bg-[#C4C197] text-dark sm:px-16">
+      <MarginWrapper >
       <h4 className="h4 pt-4 pb-8 text-center px-3">Our Featured Product</h4>
 
       <div className="sm:flex sm:justify-between sm:items-center">
@@ -40,6 +41,7 @@ const FeaturedProduct = () => {
           <ButtonTwo text="Shop Now" />
         </Link>
       </div>
+      </MarginWrapper>
     </div>
   );
 };

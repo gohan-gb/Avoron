@@ -32,7 +32,7 @@ const Footer = () => {
     try {
       const productsdata = await config.getProducts(category, fetchedCategory)
       dispatch(productFetch(productsdata));
-      navigate("/products", { state: { categoryName: fetchedCategory } });
+      navigate("/hindu-god-decoration-items/collections", { state: { categoryName: fetchedCategory } });
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +87,10 @@ const Footer = () => {
       <MarginWrapper>
         <div className='flex justify-between items-center pt-8 pb-16 px-8'>
         <div className=''>
-        © 2023 by My Site. All Rights Reserved.
+        © 2024 by Avoron. All Rights Reserved.
+        </div>
+        <div className=''>
+        © Developed and designed by Devdoots. All Rights Reserved.
         </div>
         <div className='hidden sm:block'>
           <ul className='flex flex-row gap-3 underline'>

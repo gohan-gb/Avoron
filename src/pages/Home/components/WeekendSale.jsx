@@ -22,7 +22,7 @@ const WeekendSale = () => {
   <img
     src="assets/weekendsale.webp"
     alt="salephotos"
-    className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+    className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 brightness-75"
   />
   <div data-aos='fade-in' className="absolute inset-0 flex flex-col items-center justify-center text-center text-wrap px-5">
     <h2 className="h4 text-light">Happening Now !!</h2>

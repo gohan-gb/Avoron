@@ -80,10 +80,10 @@ const NewArrivals = () => {
         <div className="max-w-8xl mx-auto py-8">
           <Slider {...settings}>
             {newlyAddedProducts.map((product) => (
-              <div key={product.id} className="p-4">
+              <div key={product.id} className="p-4 ">
                 <div className="flex flex-col items-center">
                   {/* Image Container */}
-                  <div className="w-full h-96 bg-olive rounded-2xl overflow-hidden"
+                  <div className="w-full h-96 bg-olive rounded-2xl overflow-hidden cursor-pointer"
                   onClick={() => {gotosingleProduct(product.id)}}>
                     <img
                       src={product.images[0]}
@@ -93,15 +93,29 @@ const NewArrivals = () => {
                   </div>
 
                   {/* Product Details */}
-                  <div className="mt-4 flex flex-col items-center justify-between min-h-[100px] w-full">
-                    <div className="text-lg font-medium text-gray-800 text-center line-clamp-2">
+                  <div className="mt-4 flex flex-col  justify-between min-h-[85px] w-full">
+                    <div className="text-lg  text-gray-800  line-clamp-2">
                       {product.title}
                     </div>
-                    <div className="text-base font-light text-gray-700 mt-2">
+
+                    {
+             product.discountedPrice ? (
+            <div className='2xl:w-96 lg:w-72 md:w-60 sm:w-52 w-40 flex justify-between'>
+            <div className='flex gap-2'>
+            <p className=''> ₹ {product.discountedPrice}</p>
+            <s> {product.price} </s>
+            </div>
+            <p className='text-blue-700'> On Sale </p> 
+            </div>
+          ) : (
+            <p> ₹ {product.price} </p> 
+          )
+        }
+                    {/* <div className="text-base font-light text-gray-700 mt-2">
                       {product.isDiscount === "yes" && product.discountedPrice
                         ? `Discounted: ₹${product.discountedPrice}`
                         : `₹${product.price}`}
-                    </div>
+                    </div> */}
                     {/* <div className="mt-4">
                       <ButtonTwo
                         text="Buy this"

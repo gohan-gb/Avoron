@@ -32,7 +32,7 @@ export class Config {
         }
     };
 
-    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus ) {
+    async storeFileMetadata(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, productInfo, stockStatus ) {
         try {
             const metadata = await this.databases.createDocument(
                 conf.appwriteDatabaseId, 
@@ -48,6 +48,7 @@ export class Config {
                     category: category,
                     isNewlyAdded: isNewlyAdded,
                     isFeatured: isFeatured,
+                    productInfo:productInfo,
                     stockStatus: stockStatus,
                 }
             );
@@ -59,7 +60,7 @@ export class Config {
         }
     };
 
-    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus) { 
+    async uploadFileWithCategory(title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, productInfo, stockStatus) { 
         try {
             // Array to hold the file IDs
             const imageIds = [];
@@ -83,6 +84,7 @@ export class Config {
                 category,
                 isNewlyAdded,
                 isFeatured,
+                productInfo,
                 stockStatus
             );
     
@@ -125,6 +127,7 @@ export class Config {
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
                 isFeatured: product.isFeatured,
+                productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
             // console.log(productData);
@@ -245,6 +248,7 @@ export class Config {
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
                 isFeatured: product.isFeatured,
+                productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
             // console.log(productData);
@@ -284,6 +288,7 @@ export class Config {
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
                 isFeatured: product.isFeatured,
+                productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
             // console.log(productData);
@@ -332,6 +337,7 @@ export class Config {
                 category: singleProductData.category,
                 isNewlyAdded: singleProductData.isNewlyAdded,
                 isFeatured: singleProductData.isFeatured,
+                productInfo: singleProductData.productInfo,
                 stockStatus: singleProductData.stockStatus
             };
     
@@ -354,7 +360,7 @@ export class Config {
         }
     };
 
-    async updateDocument(documentId, title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, stockStatus) {
+    async updateDocument(documentId, title, price, discountOption, discPrice, images, description, category, isNewlyAdded, isFeatured, productInfo, stockStatus) {
         try {
             const updatedDocument = await this.databases.updateDocument(
                 conf.appwriteDatabaseId, 
@@ -370,6 +376,7 @@ export class Config {
                     category: category,
                     isNewlyAdded: isNewlyAdded,
                     isFeatured: isFeatured,
+                    productInfo: productInfo,
                     stockStatus: stockStatus
                 }
             );

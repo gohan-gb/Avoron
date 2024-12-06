@@ -51,7 +51,7 @@ const SingleProduct = () => {
         <MarginWrapper>
           <h3 className="text-dark text-left mb-16">
             {" "}
-            Products / {singleProduct.title}
+            Collections / {singleProduct.title}
           </h3>
 
           <div className="flex lg:gap-16 lg:flex-row flex-col">
@@ -147,7 +147,7 @@ const SingleProduct = () => {
                     <div className="p-4 ">
                       <p>
                         {/* {product?.productInfo} */}
-                        product information
+                        {singleProduct.productInfo}
                       </p>
                     </div>
                   )}

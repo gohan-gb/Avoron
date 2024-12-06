@@ -14,6 +14,7 @@ function UpdateForm({onUpdate }) {
     const [isNewlyAdded, setisNewlyAdded] = useState("no");
     const [isFeatured, setisFeatured] = useState("no");
     const [stockStatus, setstockStatus] = useState("");
+    const [productInfo, setproductInfo] = useState('');
 
     const handleFileChange = (e) => {
         setImages([...e.target.files]);
@@ -56,6 +57,7 @@ function UpdateForm({onUpdate }) {
                 category || existingProductData.category,
                 isNewlyAdded || existingProductData.isNewlyAdded,
                 isFeatured || existingProductData.isFeatured,
+                productInfo || existingProductData.productInfo,
                 stockStatus || existingProductData.stockStatus
             );
             // console.log("Product updated successfully:", updatedProduct);
@@ -211,6 +213,20 @@ function UpdateForm({onUpdate }) {
                     <option value="no">False</option>
                     <option value="yes">True</option>
                 </select>
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="productInfo">
+                    Product Info
+                </label>
+                <textarea
+                    id="productInfo"
+                    value={productInfo}
+                    onChange={(e) => setproductInfo(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter product Information"
+                   
+                />
             </div>
 
             <div className="mb-4">

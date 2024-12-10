@@ -1,108 +1,92 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import anime from "animejs";
 
 const AnimateImage = () => {
-  // Animation variants
-  const variants = {
-    fromLeft: {
-      hidden: { x: -200, y: 50, opacity: 0 },
-      visible: { x: 0, y: 0, opacity: 1 },
+  // Image data array
+  const images = [
+    {
+      src: "/assets/krishna3.webp",
+      alt: "From Left 1",
+      style: { top: "25%", left: "10%" },
+      animation: { translateX: [-200, 0], translateY: [50, 0], opacity: [0, 1] },
+      delay: 0,
     },
-    fromRight: {
-      hidden: { x: 200, y: 50, opacity: 0 },
-      visible: { x: 0, y: 0, opacity: 1 },
+    {
+      src: "/assets/krishna2.webp",
+      alt: "From Left 2",
+      style: {
+        top: "50%",
+        left: "10%",
+        marginTop: "10%", // Correct usage of marginTop
+      },
+      animation: { translateX: [-200, 0], translateY: [50, 0], opacity: [0, 1] },
+      delay: 300,
     },
-    fromBottom: {
-      hidden: { y: 200, opacity: 0 },
-      visible: { y: 0, opacity: 1 },
+    
+    {
+      src: "/assets/krishna1.webp",
+      alt: "Centered Image",
+      style: {
+        top: "60%",
+        left: "50%",
+        transform: "translate(-50%, -50%)", // Fixes it in the center
+      },
+      animation: { translateY: [200, 0], opacity: [0, 1] },
+      delay: 600,
     },
-  };
+    {
+      src: "/assets/krishna1.webp",
+      alt: "From Right 1",
+      style: { top: "25%", right: "10%" },
+      animation: { translateX: [200, 0], translateY: [50, 0], opacity: [0, 1] },
+      delay: 900,
+    },
+    {
+      src: "/assets/krishna2.webp",
+      alt: "From Right 2",
+      style: {
+        top: "50%",
+        right: "10%",
+        marginTop: "10%", // Correct usage of marginTop
+      },
+      animation: { translateX: [200, 0], translateY: [50, 0], opacity: [0, 1] },
+      delay: 1200,
+    },
+  ];
 
-  // Ref and in-view detection
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  // Reference for the container
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const elements = containerRef.current.querySelectorAll(".animated-image");
+
+    elements.forEach((el, index) => {
+      const { animation, delay } = images[index];
+      anime({
+        targets: el,
+        ...animation,
+        delay,
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
+    });
+  }, []);
 
   return (
     <div
-      ref={sectionRef}
+      ref={containerRef}
       className="flex justify-center items-center h-screen relative"
     >
-      {/* Two images from the left */}
-      <motion.img
-         src="/assets/krishna3.webp"
-        alt="From Left 1"
-        className="absolute rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40"
-        variants={variants.fromLeft}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 0 }}
-        style={{ top: "25%", left: "10%" }}
-      />
-      <motion.img
-       src="/assets/krishna2.webp"
-        alt="From Left 2"
-        className="absolute rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40"
-        variants={variants.fromLeft}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 0.3 }}
-        style={{ top: "50%", left: "10%" }}
-      />
+      {images.map(({ src, alt, style }, index) => (
+        <img
+          key={index}
+          src={src}
+          alt={alt}
+          className={`animated-image absolute rounded-md w-28 h-40 sm:w-36 sm:h-44 md:w-48 md:h-52 lg:w-56 lg:h-72 ${index === 2 ? "hidden lg:block" : ""}`}
 
-      {/* One image from the bottom (centered horizontally and vertically) */}
-      <motion.img
-       src="/assets/krishna1.webp"
-        alt="From Bottom"
-        className="absolute hidden lg:block rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 "
-        variants={variants.fromBottom}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 0.6 }}
-        style={{
-          bottom: "50%", // Center vertically
-          left: "50%",  // Center horizontally
-          transform: "translate(-50%, 50%)", // Center image both ways
-        }}
-      />
-       <motion.img
-        src="/assets/krishna3.webp"
-        alt="From Bottom"
-        className="absolute hidden lg:block rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40"
-        variants={variants.fromBottom}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 0.6 }}
-        style={{
-          top: "50%", // Center vertically
-          right: "50%",  // Center horizontally
-          transform: "translate(-50%, 50%)", // Center image both ways
-          
-        }}
-      />
-
-
-
-      {/* Two images from the right */}
-      <motion.img
-        src="/assets/krishna1.webp"
-        alt="From Right 1"
-        className="absolute rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40"
-        variants={variants.fromRight}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 0.9 }}
-        style={{ top: "25%", right: "10%" }}
-      />
-      <motion.img
-         src="/assets/krishna2.webp"
-        alt="From Right 2"
-        className="absolute rounded-md w-28 h-28 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40"
-        variants={variants.fromRight}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 1, delay: 1.2 }}
-        style={{ top: "50%", right: "10%" }}
-      />
+          style={style}
+        />
+      ))}
     </div>
   );
 };

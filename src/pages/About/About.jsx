@@ -1,6 +1,5 @@
 import React from 'react'
 import AnimatedImage from './AnimateImage'
-import AboutCarousal from './AboutCarousal'
 import MarginWrapper from '../../common/MarginWrapper'
 
 const About = () => {
@@ -20,7 +19,7 @@ const About = () => {
         <MarginWrapper>
           <div className="flex flex-col justify-center items-center">
             <h1 className="h3 text-center pt-16 pb-16">Welcome to Avoron</h1>
-            <p className="text-center p1 pb-16 w-[75%] sm:w-[50%]">
+            <p className="text-center p1 pb-4 w-[75%] sm:w-[50%]">
             We are dedicated to providing exceptional customer service.
             Whether you have a question, need assistance, or just want to say
             hello, we're here for you. Reach out to us via email, live chat,
@@ -29,11 +28,12 @@ const About = () => {
           </div>
         </MarginWrapper>
       </div>
-      <div className="flex items-center justify-center mt-8">
-       <img
-      src="/assets/krishna3.webp"
-      alt="women empowerment"
-      className="w-full h-1/2 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl xl:max-w-4xl  rounded-s-xl rounded-e-xl object-cover" /> 
+      <div className="flex items-center justify-center">
+      <img 
+  src="/assets/krishna3.webp" 
+  alt="goddess" 
+  className="w-full max-w-[600px] max-h-[900px] sm:max-w-[600px] sm:max-h-[500px] md:max-w-[700px] md:max-h-[550px] lg:max-w-[800px] lg:max-h-[600px] xl:max-w-[900px] xl:max-h-[700px] h-auto rounded-s-xl rounded-e-xl"/>
+
       {/* <AboutCarousal /> */}
       </div>
 
@@ -57,7 +57,8 @@ const About = () => {
      <div className='overflow-hidden'>
       <AnimatedImage />
      </div>
-
+     
+     <MarginWrapper >
      <div className='my-12'>
      <p className="text-center h3 text-dark mt-8 text-6xl ">  Bring Avoron at Your Home</p>
      </div>
@@ -88,7 +89,7 @@ const About = () => {
      </p>
      </div>
      </section>
-
+     </MarginWrapper>
 
     </div>
   )

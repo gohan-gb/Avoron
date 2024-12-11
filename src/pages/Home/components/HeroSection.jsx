@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div
   className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-50 opacity-90 rounded-lg h-[500px] sm:h-[600px] md:h-[500px] lg:h-[700px] xl:h-[700px]"
   style={{
-    backgroundImage: "url('assets/krishna3.webp')",
+    backgroundImage: "url('assets/weekendsale.webp')",
     backgroundAttachment: "fixed",
   }}
 ></div>

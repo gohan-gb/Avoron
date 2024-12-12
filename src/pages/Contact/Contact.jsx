@@ -112,14 +112,15 @@ const Contact = () => {
             <h2 className="h3 pb-16"> Visit Our Store </h2>
             <h3 className="h4 pb-8"> Find Us Here </h3>
             <p className="p1">
-              82 PC Sarani, <br /> Darjeeling, West Bengal, 734004
+               82 ,Prafulla   Chaki Sarani, Near Gopal more  <br />
+               Deshbandhu Para, Siliguri -734004
             </p>
           </section>
           <section>
             <img
               data-aos="fade-up"
-              className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl"
-              src="https://images.pexels.com/photos/6387695/pexels-photo-6387695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              className="w-96 mt-8 sm:mt-0 sm:w-[480px] rounded-2xl hidden"
+              src="assets/avoron_review.webp"
               alt="contact"
             />
           </section>
@@ -131,8 +132,8 @@ const Contact = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start gap-10 pb-16">
             <section data-aos="fade-up">
               <h2 className="h3 pb-8">Customer Support</h2>
-              <p className="p1">Phone: +33 556505050</p>
-              <p className="p1">Email: info@mysite.com</p>
+              {/* <p className="p1">Phone: +33 556505050</p>
+              <p className="p1">Email: info@mysite.com</p> */}
             </section>
 
             <section

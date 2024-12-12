@@ -1,9 +1,4 @@
 import React,{useEffect} from 'react'
-import { CiBrightnessDown } from "react-icons/ci";
-// import { CiStar } from "react-icons/ci";
-// import { CiUmbrella } from "react-icons/ci";
-// import { CiShoppingCart } from "react-icons/ci";
-// import { CiShop } from "react-icons/ci";
 import MarginWrapper from '../../../common/MarginWrapper';
 import Button from '../../../components/Button';
 import {Link} from 'react-router-dom'
@@ -35,29 +30,31 @@ const MySiteMission = () => {
             <div className='flex flex-col justify-center items-center'>
             <section className='w-fit'>
               <img src = {pic1} className='w-20 h-20'></img>
-            {/* <CiBrightnessDown size={'60px'}/> */}
             </section>
             <h4> Authenticity </h4>
             </div>
             <div className='flex flex-col justify-center items-center'>
             <section className='w-fit'>
             <img src = {pic3} className='w-20 h-20'></img>
-            {/* <CiBrightnessDown size={'60px'}/> */}
             </section>
             <h4> Uniqueness </h4>
             </div>
             <div className='flex flex-col justify-center items-center'>
-            {/* <section className='border-dark border-solid border-[1px] rounded-full w-fit'> */}
             <section className='w-fit'>
             <img src = {pic2} className='w-20 h-20'></img>
-            {/* <CiBrightnessDown size={'60px'}/> */}
             </section>
             <h4> Affordability </h4>
+            </div>
+            <div className='flex flex-col justify-center items-center'>
+            <section className='w-fit'>
+            <img src = '/assets/delivcol.svg' className='w-20 h-20'></img>
+            </section>
+            <h4> World-wide Delivery </h4>
             </div>
         </div>
         
         <p  data-aos='fade-in' className='text-center w-[75%] sm:w-[50%] pb-16'>
-        My Site is your go-to destination for embracing the goddess within. Our passion for exquisite fashion and divine beauty drives us to provide an unparalleled shopping experience. Join us in celebrating the essence of femininity and allure.
+        Avoron is your go-to destination for embracing the goddess within. Our passion for exquisite fashion and divine beauty drives us to provide an unparalleled shopping experience. Join us in celebrating the essence of femininity.
         </p>
 
         <Link to = '/about'>

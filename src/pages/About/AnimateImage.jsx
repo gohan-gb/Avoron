@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import anime from "animejs";
 
 const AnimateImage = () => {
@@ -18,6 +19,7 @@ const AnimateImage = () => {
         top: "50%",
         left: "10%",
         marginTop: "10%",
+        marginTop: "10%",
       },
       animation: { translateX: [-200, 0], translateY: [50, 0], opacity: [0, 1] },
       delay: 300,
@@ -28,6 +30,7 @@ const AnimateImage = () => {
       style: {
         top: "60%",
         left: "50%",
+        transform: "translate(-50%, -50%)",
         transform: "translate(-50%, -50%)",
       },
       animation: { translateY: [200, 0], opacity: [0, 1] },
@@ -47,6 +50,7 @@ const AnimateImage = () => {
         top: "50%",
         right: "10%",
         marginTop: "10%",
+        marginTop: "10%",
       },
       animation: { translateX: [200, 0], translateY: [50, 0], opacity: [0, 1] },
       delay: 1200,
@@ -55,7 +59,8 @@ const AnimateImage = () => {
 
   // Reference for the container
   const containerRef = useRef(null);
-
+  
+  // IntersectionObserver to detect when the section is in view
   // State to track if animation has been triggered
   const [hasAnimated, setHasAnimated] = useState(false);
 

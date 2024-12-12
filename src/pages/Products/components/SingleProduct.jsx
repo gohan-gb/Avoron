@@ -185,7 +185,8 @@ const SingleProduct = () => {
                     <div className="p-4 ">
                       <p>
                         {/* {product?.shippingTime} */}
-                        shippingtime
+                        We deliver through out the world. Within India the delivery usually takes 5-7 business days.
+                        For the case of outside India the delivery depends on your location.
                       </p>
                     </div>
                   )}

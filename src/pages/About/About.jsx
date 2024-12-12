@@ -32,7 +32,14 @@ const About = () => {
       <img 
   src="/assets/krishna3.webp" 
   alt="goddess" 
-  className="w-full max-w-[600px] max-h-[900px] sm:max-w-[600px] sm:max-h-[500px] md:max-w-[700px] md:max-h-[550px] lg:max-w-[800px] lg:max-h-[600px] xl:max-w-[900px] xl:max-h-[700px] h-auto rounded-s-xl rounded-e-xl"/>
+  className="w-full max-w-[500px] h-auto 
+             sm:max-w-[600px] sm:max-h-[500px] 
+             md:max-w-[700px] md:max-h-[550px] 
+             lg:max-w-[800px] lg:max-h-[600px] 
+             xl:max-w-[800px] xl:max-h-[600px] 
+             rounded-s-xl rounded-e-xl"
+/>
+
 
       {/* <AboutCarousal /> */}
       </div>

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import React, { useEffect, useRef, useState } from "react";
 import anime from "animejs";
 
 const AnimateImage = () => {
@@ -59,7 +58,7 @@ const AnimateImage = () => {
 
   // Reference for the container
   const containerRef = useRef(null);
-  
+
   // IntersectionObserver to detect when the section is in view
   // State to track if animation has been triggered
   const [hasAnimated, setHasAnimated] = useState(false);

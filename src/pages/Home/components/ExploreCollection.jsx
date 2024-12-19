@@ -88,7 +88,7 @@ const ExploreCollection = () => {
               className="w-full h-full object-cover rounded-e-xl rounded-s-xl opacity-90 brightness-50 transform transition-transform duration-500 ease-in-out group-hover:scale-110"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-yellow h4">Sarees</p>
+              <p className="text-yellow h4">Sarees / Gopal Dresses</p>
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"

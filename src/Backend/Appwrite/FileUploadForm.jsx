@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import config from './config';
+import conf from "./conf";
+import { Editor } from '@tinymce/tinymce-react';
 
 function FileUploadForm() {
     const [images, setImages] = useState([]); 
@@ -75,13 +77,16 @@ function FileUploadForm() {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                     Description
                 </label>
-                <textarea
-                    id="description"
+                <Editor
+                    apiKey= {conf.tinymceKey}  // Replace with your actual TinyMCE API key
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter product description"
-                    required
+                    onEditorChange={(newDescription) => setDescription(newDescription)}
+                    init={{
+                        height: 200,
+                        menubar: false,
+                        plugins: ['lists', 'link', 'image', 'table'],
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+                    }}
                 />
             </div>
 
@@ -191,13 +196,16 @@ function FileUploadForm() {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="productInfo">
                    Product Info
                 </label>
-                <textarea
-                    id="productInfo"
+                <Editor
+                    apiKey= {conf.tinymceKey} 
                     value={productInfo}
-                    onChange={(e) => setproductInfo(e.target.value)}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter product Information"
-                    required
+                    onEditorChange={(productInfo) => setproductInfo(productInfo)}
+                    init={{
+                        height: 200,
+                        menubar: false,
+                        plugins: ['lists', 'link', 'image', 'table'],
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+                    }}
                 />
             </div>
 

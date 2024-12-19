@@ -3,6 +3,7 @@ import MarginWrapper from "../../../common/MarginWrapper";
 import { LuIndianRupee } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
+import parse from 'html-react-parser'
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,13 +23,13 @@ const SingleProduct = () => {
 
   // const singleProduct = data.find((product) => product.id == id);
 
-  const [activeIndex, setActiveIndex] = useState(0); // Open first accordion by default
+  const [activeIndex, setActiveIndex] = useState(0); 
 
   const toggleAccordion = (index) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const [quantity, setQuantity] = useState(1); // Set your default quantity here
+  const [quantity, setQuantity] = useState(1); 
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -51,7 +52,7 @@ const SingleProduct = () => {
         <MarginWrapper>
           <h3 className="text-dark text-left mb-16">
             {" "}
-            Collections / {singleProduct.title}
+            Collections / {singleProduct.title} / {singleProduct.id}
           </h3>
 
           <div className="flex lg:gap-16 lg:flex-row flex-col">
@@ -83,14 +84,14 @@ const SingleProduct = () => {
 
               <p className="sm:w-[520px] w-80 lg:block hidden text-dark">
                 {" "}
-                {singleProduct.description}{" "}
+                {parse(singleProduct.description)}{""}
               </p>
             </div>
             <div className="flex flex-col justify-start">
               <h2 className="h4 text-dark mb-8"> {singleProduct.title} </h2>
               <p className="sm:w-[520px] w-80 mb-8 block lg:hidden text-dark">
                 {" "}
-                {singleProduct.description}{" "}
+                {parse(singleProduct.description)}{""}
               </p>
 
               {singleProduct.discountedPrice ? (
@@ -144,10 +145,16 @@ const SingleProduct = () => {
                     <span>{activeIndex === 0 ? "-" : "+"}</span>
                   </button>
                   {activeIndex === 0 && (
-                    <div className="p-4 ">
+                    // <div className="p-4 ">
+                    //   <p>
+                    //     {parse(singleProduct.productInfo)}
+                    //   </p>
+                    // </div>
+                    <div className="p-4">
                       <p>
-                        {/* {product?.productInfo} */}
-                        {singleProduct.productInfo}
+                        {singleProduct.productInfo 
+                          ? parse(singleProduct.productInfo) 
+                          : "Please contact us over whatsapp for exact size or tell us your custom size"}
                       </p>
                     </div>
                   )}

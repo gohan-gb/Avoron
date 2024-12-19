@@ -1,5 +1,7 @@
 import React, { useState} from "react";
 import config from "./config";
+import conf from "./conf";
+import { Editor } from '@tinymce/tinymce-react';
 
 function UpdateForm({onUpdate }) {
     
@@ -70,6 +72,7 @@ function UpdateForm({onUpdate }) {
         }
     };
 
+    
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
@@ -105,13 +108,16 @@ function UpdateForm({onUpdate }) {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                     Description
                 </label>
-                <textarea
-                    id="description"
+                 <Editor
+                    apiKey= {conf.tinymceKey}  // Replace with your actual TinyMCE API key
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Enter product description"
-                   
+                    onEditorChange={(newDescription) => setDescription(newDescription)}
+                    init={{
+                        height: 200,
+                        menubar: false,
+                        plugins: ['lists', 'link', 'image', 'table'],
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+                    }}
                 />
             </div>
 
@@ -219,13 +225,24 @@ function UpdateForm({onUpdate }) {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="productInfo">
                     Product Info
                 </label>
-                <textarea
+                {/* <textarea
                     id="productInfo"
                     value={productInfo}
                     onChange={(e) => setproductInfo(e.target.value)}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Enter product Information"
                    
+                /> */}
+                <Editor
+                    apiKey= {conf.tinymceKey}  // Replace with your actual TinyMCE API key
+                    value={productInfo}
+                    onEditorChange={(productInfo) => setproductInfo(productInfo)}
+                    init={{
+                        height: 200,
+                        menubar: false,
+                        plugins: ['lists', 'link', 'image', 'table'],
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+                    }}
                 />
             </div>
 

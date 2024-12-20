@@ -161,14 +161,14 @@ const Testimonial = () => {
       <div
         className="relative flex flex-col items-center justify-center h-[600px] bg-cover bg-center bg-no-repeat px-4"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1571434976902-a6e3e1eb0d51?q=80&w=1924&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1608616693282-efebe8b5f2b0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
         }}
       >
        <div className="absolute top-4 w-full text-center px-4">
            <h1 className="h4 text-center">What People Say About Us</h1>
        </div>
 
-        <div className="relative z-10 w-full max-w-4xl bg-white/50 bg-opacity-90 p-6 rounded-md">
+        <div className="relative z-10 w-full max-w-4xl bg-white bg-opacity-90 p-6 rounded-md">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
               <div

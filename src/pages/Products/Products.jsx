@@ -71,7 +71,8 @@ const Products = () => {
         setLoading(true);
         const productsdata = await config.getProducts(category, fetchedCategory);
         if (productsdata) {
-          dispatch(productFetch(productsdata));
+          const reversedProducts = [...productsdata].reverse();
+          dispatch(productFetch(reversedProducts));
           setCategoryName(displayName); // Set the display name
           setLoading(false);
         } else {
@@ -87,7 +88,8 @@ const Products = () => {
         setLoading(true)
         const productsdata = await config.getallProducts()
         if (productsdata) {
-          dispatch(productFetch(productsdata)); 
+          const reversedProducts = [...productsdata].reverse();
+          dispatch(productFetch(reversedProducts)); 
           setCategoryName("All Products");
           setLoading(false)
         }
@@ -109,6 +111,7 @@ const Products = () => {
       try {
         const stringid = String(id)
         const singleproductdata = await config.getsingleProductData (stringid)
+        
         if (singleproductdata) {
           const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
           dispatch(singleproductFetch(singleproductdata)); 

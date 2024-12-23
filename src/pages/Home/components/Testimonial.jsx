@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MarginWrapper from "../../../common/MarginWrapper";
+
 const testimonials = [
   {
     image: "/assets/review1.jpg",
@@ -64,29 +65,31 @@ const Testimonial = () => {
   return (
     <div className="mt-24">
       <MarginWrapper>
-      <div className="text-center mb-12">
-        <h1 className="mb-8 mt-8 text-center text-2xl font-semibold">
-          What People Say About Us
-        </h1>
-      </div>
-      <div className="max-w-full mx-auto p-2 overflow-hidden mb-12">
-        <Slider {...settings}>
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="px-0"> {/* Set px-0 for no padding */}
-              <div className="flex flex-col items-center text-center">
-                <img
-                  src={testimonial.image}
-                  alt={`Testimonial ${index + 1}`}
-                  className="rounded-xl transition-transform duration-300 w-[250px] h-[300px]"
-                />
-                <p className="mt-4 text-gray-700 text-sm text-center leading-4">
-                  {testimonial.text[0]} <br /> {testimonial.text[1]}
-                </p>
+        <div className="text-center mb-12">
+          <h1 className="mb-8 mt-8 text-center h4">
+            What People Say About Us
+          </h1>
+        </div>
+        <div className="max-w-full mx-auto p-2 overflow-hidden mb-12">
+          <Slider {...settings}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="px-0"> {/* Set px-0 for no padding */}
+                <div className="grid grid-cols-1 gap-4 place-items-center text-center"> {/* Grid Layout */}
+                  <div className="w-[250px] h-[300px]">
+                  <img
+                    src={testimonial.image}
+                    alt={`Testimonial ${index + 1}`}
+                    className="rounded-xl transition-transform duration-300  w-full h-full object-cover"
+                  />
+                  </div>
+                  <p className="text-gray-700 text-sm text-center leading-4">
+                    {testimonial.text[0]} <br /> {testimonial.text[1]}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
+            ))}
+          </Slider>
+        </div>
       </MarginWrapper>
     </div>
   );

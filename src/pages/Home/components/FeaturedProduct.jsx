@@ -19,7 +19,6 @@ const FeaturedProduct = () => {
       <h4 className="h4 pt-4 pb-8 text-center px-3">Our Featured Product</h4>
 
       <div className="sm:flex sm:justify-between sm:items-center">
-        {/* Text Section */}
         <div data-aos='fade-up' className="sm:w-1/2 text-center">
           <h3 className="pb-6 h3">People Love These!</h3>
           <p className="pb-4  hidden sm:block">Our Best Products</p>
@@ -30,7 +29,6 @@ const FeaturedProduct = () => {
           </div>
         </div>
 
-        {/* Carousel Section */}
         <div data-aos='fade-up' >
           <FeatureProductCarousal />
         </div>

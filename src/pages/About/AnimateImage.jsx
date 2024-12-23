@@ -18,7 +18,6 @@ const AnimateImage = () => {
         top: "50%",
         left: "10%",
         marginTop: "10%",
-        marginTop: "10%",
       },
       animation: { translateX: [-200, 0], translateY: [50, 0], opacity: [0, 1] },
       delay: 300,
@@ -48,7 +47,6 @@ const AnimateImage = () => {
       style: {
         top: "50%",
         right: "10%",
-        marginTop: "10%",
         marginTop: "10%",
       },
       animation: { translateX: [200, 0], translateY: [50, 0], opacity: [0, 1] },

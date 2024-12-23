@@ -20,7 +20,7 @@ const WeekendSale = () => {
     <div className='mt-24'>
       <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px] bg-black rounded-s-xl rounded-e-xl overflow-hidden group">
   <img
-    src="assets/weekendsale.webp"
+    src="assets/krishna-weekend.webp"
     alt="salephotos"
     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 brightness-75"
   />

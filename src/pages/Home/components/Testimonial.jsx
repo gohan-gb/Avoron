@@ -75,13 +75,11 @@ const Testimonial = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="px-0"> {/* Set px-0 for no padding */}
                 <div className="grid grid-cols-1 gap-4 place-items-center text-center"> {/* Grid Layout */}
-                  <div className="w-[250px] h-[300px]">
                   <img
                     src={testimonial.image}
                     alt={`Testimonial ${index + 1}`}
-                    className="rounded-xl transition-transform duration-300  w-full h-full object-cover"
+                    className="rounded-xl transition-transform duration-300 w-[250px] h-[300px]"
                   />
-                  </div>
                   <p className="text-gray-700 text-sm text-center leading-4">
                     {testimonial.text[0]} <br /> {testimonial.text[1]}
                   </p>

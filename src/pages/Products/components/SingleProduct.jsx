@@ -173,7 +173,7 @@ const SingleProduct = () => {
                     <div className="p-4 ">
                       <p>
                         {/* {product?.refundPolicy} */}
-                        refund policy
+                        If approved, the refund will be processed, and the amount will be credited to your original payment method within 7-10 business days.
                       </p>
                     </div>
                   )}

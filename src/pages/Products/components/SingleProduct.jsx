@@ -62,7 +62,7 @@ const SingleProduct = () => {
 
   const handleWhatsapp = () => {
     const message = `avoron.in Please order ${quantity} of ${singleProduct?.title} for me `;
-    const whatsappUrl = `https://wa.me/+919851375776?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+917810935690?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 

@@ -22,7 +22,7 @@ const Navbar = () => {
             alt="logo"
           /></Link>
           <ul className="sm:flex justify-between items-center gap-10 hidden">
-            <Link to={'/hindu-god-decoration-items/collections'}><li>Shop All</li></Link>
+            <Link to={'/Laddu-Gopal-dress-decoration-items/shop-now'}><li>Shop All</li></Link>
             <Link to={'about'}><li>About Us</li></Link>
             <Link to={'contact'}><li>Contact</li></Link>
           </ul>

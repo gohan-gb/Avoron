@@ -23,7 +23,7 @@ const FeaturedProduct = () => {
           <h3 className="pb-6 h3">People Love These!</h3>
           <p className="pb-4  hidden sm:block">Our Best Products</p>
           <div className="mt-4 lg:mt-8 md:mt-6 hidden sm:block">
-            <Link to="/hindu-god-decoration-items/collections">
+            <Link to="/Laddu-Gopal-dress-decoration-items/shop-now">
               <ButtonTwo text="Shop Now" />
             </Link>
           </div>
@@ -35,7 +35,7 @@ const FeaturedProduct = () => {
       </div>
 
       <div className="mt-4 lg:mt-8 md:mt-6  sm:hidden pb-5 flex justify-center items-center">
-        <Link to="/hindu-god-decoration-items/collections">
+        <Link to="/Laddu-Gopal-dress-decoration-items/shop-now">
           <ButtonTwo text="Shop Now" />
         </Link>
       </div>

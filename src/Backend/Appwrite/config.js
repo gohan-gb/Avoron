@@ -264,10 +264,16 @@ export class Config {
         try {
             const productForCategories = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
-                conf.appwriteCollectionId
+                conf.appwriteCollectionId,
+                [
+                    Query.limit(52)
+                ]
             );
+            console.log(productForCategories);
+            
     
             const productdata = productForCategories.documents;
+            
     
             const productsWithImageLinks = await Promise.all(productdata.map(async product => {
                 const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
@@ -291,7 +297,7 @@ export class Config {
                 productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
-            // console.log(productData);
+            console.log(productData);
             return productData;
     
         } catch (error) {

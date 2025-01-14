@@ -115,7 +115,7 @@ const Products = () => {
         if (singleproductdata) {
           const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
           dispatch(singleproductFetch(singleproductdata)); 
-          navigate(`/hindu-god-decoration-items/${singleproductdata.category}/${slug}/${id}`)
+          navigate(`/Laddu-Gopal-dress-decoration-items/shop-now/${singleproductdata.category}/${slug}/${id}`)
         }
       } catch (error) {
         console.log(error);
@@ -235,9 +235,7 @@ const Products = () => {
       </section>
 
               <p className="text-dark hidden sm:block">
-                This is your category description. It’s a great place to tell
-                customers what this category is about, connect with your
-                audience and draw attention to your products.
+                Buy our exclusive handmade items of Laddo Gopal dresses, deity jewelry, Mata Laxmi sarees, and other divine deity items, along with empowering accessories and exclusive offers.
               </p>
             </div>
 

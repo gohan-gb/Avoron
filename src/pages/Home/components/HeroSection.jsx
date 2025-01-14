@@ -24,12 +24,12 @@ const HeroSection = () => {
           Adorn the Divine with Avoron – where grace meets craftsmanship
         </h2>
         <p className="hidden sm:block text-base md:text-lg lg:text-xl xl:text-2xl text-light max-w-3xl mx-auto break-words mt-2">
-          Shop our premium selection of goddess hair, dresses, temple swings,
+        Buy our exclusive handmade items of Laddo Gopal dresses,
           <br className="hidden md:block" />
-          and traditional accessories to enrich your devotional space with elegance.
+          Mata Laxmi sarees, and other divine deity items, along with empowering accessories and exclusive offers.
         </p>
         <div className="mt-4 lg:mt-8 md:mt-6  mb-24 sm:mb-6 md:mb-8 lg:mb-2 xl:mb-2">
-          <Link to="/hindu-god-decoration-items/collections">
+          <Link to='/Laddu-Gopal-dress-decoration-items/shop-now'>
             <Button text="View Shop" />
           </Link>
         </div>

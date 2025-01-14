@@ -32,7 +32,7 @@ const Footer = () => {
     try {
       const productsdata = await config.getProducts(category, fetchedCategory)
       dispatch(productFetch(productsdata));
-      navigate("/hindu-god-decoration-items/collections", { state: { categoryName: fetchedCategory } });
+      navigate('/Laddu-Gopal-dress-decoration-items/shop-now', { state: { categoryName: fetchedCategory } });
     } catch (error) {
       console.log(error);
     }
@@ -48,13 +48,13 @@ const Footer = () => {
             Stay Inspired and <br /> Empowered
           </h2>
           <p className='lg:mb-0 mb-12'>
-          Receive the latest trends and updates on goddess fashion, <br /> empowering accessories, and exclusive offers
+          Receive our exclusive handmade items of Laddo Gopal dresses, <br /> deity jewelry, Mata Laxmi sarees, and other divine deity items, <br /> along with empowering accessories and exclusive offers.
           </p>
         </div>
         <div className='flex justify-between items-start sm:gap-24 sm:w-auto w-full mb-8'>
         <ul className='flex flex-col gap-3'>
           <Link to={'/'}><li className='cursor-pointer'>Home</li></Link>
-          <Link to={'/hindu-god-decoration-items/collections'}><li className='cursor-pointer'>Shop All</li></Link>
+          <Link to={'/Laddu-Gopal-dress-decoration-items/shop-now'}><li className='cursor-pointer'>Shop All</li></Link>
           <Link to={'/about'}><li className='cursor-pointer'>Our mission</li></Link>
           <Link to={'/contact'}><li className='cursor-pointer'>Contact</li></Link>
           <Link to={'/'}><li className='cursor-pointer'>Return Policy</li></Link>

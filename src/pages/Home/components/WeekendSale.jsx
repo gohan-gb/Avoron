@@ -27,7 +27,7 @@ const WeekendSale = () => {
   <div data-aos='fade-in' className="absolute inset-0 flex flex-col items-center justify-center text-center text-wrap px-5">
     <h2 className="h4 text-light">Happening Now !!</h2>
     <h1  className="text-6xl sm:text-6xl md:text-6xl lg:text-custom-lg xl:text-custom-xl mt-8 mb-8 text-yellow2">Weekend Sale</h1>
-    <Link to="/hindu-god-decoration-items/collections">
+    <Link to="/Laddu-Gopal-dress-decoration-items/shop-nowcollections">
       <Button text="Shop Now" />
     </Link>
   </div>

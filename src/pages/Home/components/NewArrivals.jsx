@@ -22,7 +22,7 @@ const NewArrivals = () => {
       if (singleproductdata) {
         const slug = slugify(singleproductdata.title, { replacement: '-', remove: 'or' });
         dispatch(singleproductFetch(singleproductdata)); 
-        navigate(`/hindu-god-decoration-items/${singleproductdata.category}/${slug}/${id}`)
+        navigate(`/Laddu-Gopal-dress-decoration-items/shop-now${singleproductdata.category}/${slug}/${id}`)
       }
     } catch (error) {
       console.log(error);

@@ -35,7 +35,7 @@ const ExploreCollection = () => {
     try {
       const productsdata = await config.getProducts(category, fetchedCategory)
       dispatch(productFetch(productsdata));
-      navigate("/hindu-god-decoration-items/collections", { state: { categoryName: fetchedCategory } });
+      navigate("/Laddu-Gopal-dress-decoration-items/shop-now", { state: { categoryName: fetchedCategory } });
     } catch (error) {
       console.log(error);
     }

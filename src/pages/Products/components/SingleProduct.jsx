@@ -61,7 +61,7 @@ const SingleProduct = () => {
   };
 
   const handleWhatsapp = () => {
-    const message = `avoron.in Please order ${quantity} of ${singleProduct?.title} for me `;
+    const message = `avoron.in Please order ${quantity} of ${singleProduct?.title} for me and the product ID is ${singleProduct?.$id}  `;
     const whatsappUrl = `https://wa.me/+917810935690?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };

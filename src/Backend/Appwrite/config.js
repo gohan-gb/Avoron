@@ -144,7 +144,10 @@ export class Config {
             const productForCategories = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [Query.equal(categoryName, category)]
+                [Query.equal(categoryName, category)],
+                [
+                    Query.limit(70)
+                ]
             );
     
             const productdata = productForCategories.documents;
@@ -266,7 +269,7 @@ export class Config {
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 [
-                    Query.limit(52)
+                    Query.limit(70)
                 ]
             );
             console.log(productForCategories);

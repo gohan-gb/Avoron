@@ -156,9 +156,10 @@ function FileUploadForm() {
                     <option value="" disabled>
                     Select a category
                     </option>
-                    <option value="Jewellery">Jewellery</option>
-                    <option value="Accessories">Accessories</option>
-                    <option value="Sarees">Sarees</option>
+                    <option value="Gopal's Jewellery">Gopal's Jewellery</option>
+                    <option value="Gopal's Dresses">Gopal's Dresses</option>
+                    <option value="Laxmi's Saree">Laxmi's Sarees</option>
+                    <option value="Laxmi's Jewellery">Laxmi's Jewellery</option>
                 </select>
             </div>
 

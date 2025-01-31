@@ -9,7 +9,7 @@ import pic3 from '../../../../public/assets/022-B.webp'
 import pic2 from '../../../../public/assets/015-A.webp'
 import pic1 from '../../../../public/assets/007.webp'
 import pic4 from '../../../../public/assets/Gopaldress.webp'
-import pic5 from '../../../../public/assets/Gopalmukut.webp'
+import pic5 from '../../../../public/assets/GopalMukut.webp'
 
 
 const ExploreCollection = () => {

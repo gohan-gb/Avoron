@@ -8,6 +8,8 @@ import MarginWrapper from '../../../common/MarginWrapper';
 import pic3 from '../../../../public/assets/022-B.webp'
 import pic2 from '../../../../public/assets/015-A.webp'
 import pic1 from '../../../../public/assets/007.webp'
+import pic4 from '../../../../public/assets/Gopaldress.webp'
+import pic5 from '../../../../public/assets/Gopalmukut.webp'
 
 
 const ExploreCollection = () => {
@@ -18,6 +20,8 @@ const ExploreCollection = () => {
   const allcategory = async () => {
     try {
       const categories = await config.getAllCategories()
+      console.log(categories);
+      
       setCategories(categories);
     } catch (error) {
       console.log(error);
@@ -55,7 +59,7 @@ const ExploreCollection = () => {
               className="w-full h-full object-cover rounded-e-xl rounded-s-xl opacity-90 brightness-50 transform transition-transform duration-500 ease-in-out group-hover:scale-110"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-yellow h4">Jewellery</p>
+              <p className="text-yellow h4">Laxmi's Jewellery</p>
             </div>
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
             onClick={() => getProductsforthiscategory("category", categories[0])}>
@@ -66,12 +70,12 @@ const ExploreCollection = () => {
           <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
           onClick={() => getProductsforthiscategory("category", categories[1])}>
             <img
-              src={pic1}
+              src={pic5}
               alt="Accessory"
               className="w-full h-full object-cover rounded-e-xl rounded-s-xl opacity-90 brightness-50 transform transition-transform duration-500 ease-in-out group-hover:scale-110"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-yellow h4">Accessory</p>
+              <p className="text-yellow h4">Ladoo Gopal's Jewellery</p>
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
@@ -83,12 +87,29 @@ const ExploreCollection = () => {
           <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
           onClick={() => getProductsforthiscategory("category", categories[2])}>
             <img
+              src={pic4}
+              alt="sarees"
+              className="w-full h-full object-cover rounded-e-xl rounded-s-xl opacity-90 brightness-50 transform transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-yellow h4">Laddo Gopal's Dress</p>
+            </div>
+
+            <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"
+            onClick={() => getProductsforthiscategory("category", categories[3])}>
+              <Button  text='Explore More'/>
+            </div>
+          </div>
+
+          <div className="cursor-pointer relative w-full h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[420px] rounded-e-xl rounded-s-xl bg-olive overflow-hidden group"
+          onClick={() => getProductsforthiscategory("category", categories[2])}>
+            <img
               src={pic3}
               alt="sarees"
               className="w-full h-full object-cover rounded-e-xl rounded-s-xl opacity-90 brightness-50 transform transition-transform duration-500 ease-in-out group-hover:scale-110"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-yellow h4">Sarees / Gopal Dresses</p>
+              <p className="text-yellow h4">Laxmi Mata Saree</p>
             </div>
 
             <div className="absolute bottom-0 inset-x-0 mb-5 flex items-center justify-center"

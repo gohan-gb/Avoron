@@ -272,7 +272,7 @@ export class Config {
                     Query.limit(70)
                 ]
             );
-            console.log(productForCategories);
+            // console.log(productForCategories);
             
     
             const productdata = productForCategories.documents;
@@ -300,7 +300,7 @@ export class Config {
                 productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
-            console.log(productData);
+            // console.log(productData);
             return productData;
     
         } catch (error) {

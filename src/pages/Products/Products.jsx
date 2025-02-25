@@ -249,6 +249,7 @@ const Products = () => {
                       title={item.title}
                       discountedPrice={item.discountedPrice}
                       price={item.price}
+                      stockStatus={item.stockStatus}
                     />
                   </div>
                 );

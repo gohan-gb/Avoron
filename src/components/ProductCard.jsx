@@ -34,7 +34,7 @@ const ProductCard = ( {
         </div>
         <div>
           {
-            stockStatus  ? <p className='text-green-800'> In-stock </p> : <p className='text-red-500'> Out of stock </p>
+            stockStatus === 'yes' ? <p className='text-green-800'> In-stock </p> : <p className='text-red-500'> Out of stock </p>
           }
         </div>
     </div>

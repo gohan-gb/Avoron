@@ -96,16 +96,73 @@ export class Config {
         }
     };
 
-    async getProductsForCategories(category) {
+    // async getProductsForCategories(category) {
+    //     try {
+    //         const productForCategories = await this.databases.listDocuments(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             [Query.equal('category', category)]
+    //         );
+    
+    //         // Fetch product data
+    //         const productdata = productForCategories.documents;
+    
+    //         // Map through products and fetch image links for each product
+    //         const productsWithImageLinks = await Promise.all(productdata.map(async product => {
+    //             const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+    //             return {
+    //                 ...product,
+    //                 images: imageLinks // Replace image IDs with their corresponding links
+    //             };
+    //         }));
+
+    //         const productData = productsWithImageLinks.map((product) => ({
+    //             id: product.$id,
+    //             title: product.title,
+    //             price: product.price,
+    //             isDiscount: product.discountOption,
+    //             discountedPrice: product.discPrice,
+    //             images: product.images, // Assuming `images` is an array of URLs
+    //             description: product.description,
+    //             category: product.category,
+    //             isNewlyAdded: product.isNewlyAdded,
+    //             isFeatured: product.isFeatured,
+    //             productInfo: product.productInfo,
+    //             stockStatus: product.stockStatus
+    //         }));
+    //         // console.log(productData);
+    //         return productData;
+    
+    //     } catch (error) {
+    //         console.log("Appwrite service :: getProductsForCategories :: error", error);
+    //         throw error;
+    //     }
+    // };
+    
+    async getProductsForCategories(category, limit = 25, cursor = null) {
         try {
+            // Build query parameters
+            const queryParams = [
+                Query.equal('category', category),
+                Query.limit(limit)
+            ];
+            
+            // Add cursor for pagination if provided
+            if (cursor) {
+                queryParams.push(Query.cursorAfter(cursor));
+            }
+            
             const productForCategories = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [Query.equal('category', category)]
+                queryParams
             );
     
             // Fetch product data
             const productdata = productForCategories.documents;
+            
+            // Get the last document ID for next page
+            const lastId = productdata.length > 0 ? productdata[productdata.length - 1].$id : null;
     
             // Map through products and fetch image links for each product
             const productsWithImageLinks = await Promise.all(productdata.map(async product => {
@@ -115,7 +172,7 @@ export class Config {
                     images: imageLinks // Replace image IDs with their corresponding links
                 };
             }));
-
+    
             const productData = productsWithImageLinks.map((product) => ({
                 id: product.$id,
                 title: product.title,
@@ -130,27 +187,89 @@ export class Config {
                 productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
-            // console.log(productData);
-            return productData;
+            
+            // Return both the products and pagination info
+            return {
+                products: productData,
+                pagination: {
+                    hasMore: productdata.length === limit,
+                    nextCursor: lastId
+                }
+            };
     
         } catch (error) {
             console.log("Appwrite service :: getProductsForCategories :: error", error);
             throw error;
         }
-    };
+    }
+
+
+    // async getProducts(categoryName, category) {
+    //     try {
+    //         const productForCategories = await this.databases.listDocuments(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             [Query.equal(categoryName, category)],
+    //             [
+    //                 Query.limit(70)
+    //             ]
+    //         );
     
-    async getProducts(categoryName, category) {
+    //         const productdata = productForCategories.documents;
+    
+    //         const productsWithImageLinks = await Promise.all(productdata.map(async product => {
+    //             const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+    //             return {
+    //                 ...product,
+    //                 images: imageLinks
+    //             };
+    //         }));
+
+    //         const productData = productsWithImageLinks.map((product) => ({
+    //             id: product.$id,
+    //             title: product.title,
+    //             price: product.price,
+    //             isDiscount: product.discountOption,
+    //             discountedPrice: product.discPrice,
+    //             images: product.images,
+    //             description: product.description,
+    //             category: product.category,
+    //             isNewlyAdded: product.isNewlyAdded,
+    //             isFeatured: product.isFeatured,
+    //             stockStatus: product.stockStatus
+    //         }));
+    //         // console.log(productData);
+    //         return productData;
+    
+    //     } catch (error) {
+    //         console.log("Appwrite service :: getProducts :: error", error);
+    //         throw error;
+    //     }
+    // };
+
+    async getProducts(categoryName, category, limit = 25, cursor = null) {
         try {
+            // Build query parameters
+            const queryParams = [
+                Query.equal(categoryName, category),
+                Query.limit(limit)
+            ];
+            
+            // Add cursor for pagination if provided
+            if (cursor) {
+                queryParams.push(Query.cursorAfter(cursor));
+            }
+            
             const productForCategories = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [Query.equal(categoryName, category)],
-                [
-                    Query.limit(70)
-                ]
+                queryParams
             );
     
             const productdata = productForCategories.documents;
+            
+            // Get the last document ID for next page
+            const lastId = productdata.length > 0 ? productdata[productdata.length - 1].$id : null;
     
             const productsWithImageLinks = await Promise.all(productdata.map(async product => {
                 const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
@@ -159,7 +278,7 @@ export class Config {
                     images: imageLinks
                 };
             }));
-
+    
             const productData = productsWithImageLinks.map((product) => ({
                 id: product.$id,
                 title: product.title,
@@ -171,16 +290,24 @@ export class Config {
                 category: product.category,
                 isNewlyAdded: product.isNewlyAdded,
                 isFeatured: product.isFeatured,
+                productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
-            // console.log(productData);
-            return productData;
+            
+            // Return both the products and pagination info
+            return {
+                products: productData,
+                pagination: {
+                    hasMore: productdata.length === limit,
+                    nextCursor: lastId
+                }
+            };
     
         } catch (error) {
             console.log("Appwrite service :: getProducts :: error", error);
             throw error;
         }
-    };
+    }
 
     async getfeaturedProducts() {
         try {
@@ -263,21 +390,75 @@ export class Config {
         }
     };
 
-    async getallProducts() {
+    // async getallProducts() {
+    //     try {
+    //         const productForCategories = await this.databases.listDocuments(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             [
+    //                 Query.limit(70)
+    //             ]
+    //         );
+    //         // console.log(productForCategories);
+            
+    
+    //         const productdata = productForCategories.documents;
+            
+    
+    //         const productsWithImageLinks = await Promise.all(productdata.map(async product => {
+    //             const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
+    //             return {
+    //                 ...product,
+    //                 images: imageLinks
+    //             };
+    //         }));
+
+    //         const productData = productsWithImageLinks.map((product) => ({
+    //             id: product.$id,
+    //             title: product.title,
+    //             price: product.price,
+    //             isDiscount: product.discountOption,
+    //             discountedPrice: product.discPrice,
+    //             images: product.images,
+    //             description: product.description,
+    //             category: product.category,
+    //             isNewlyAdded: product.isNewlyAdded,
+    //             isFeatured: product.isFeatured,
+    //             productInfo: product.productInfo,
+    //             stockStatus: product.stockStatus
+    //         }));
+            
+    //         return productData;
+    
+    //     } catch (error) {
+    //         console.log("Appwrite service :: getallProducts :: error", error);
+    //         throw error;
+    //     }
+    // };
+
+    async getallProducts(limit = 25, cursor = null) {
         try {
+            // Build the query array
+            const queryParams = [
+                Query.limit(limit)
+            ];
+            
+            // Add cursor for pagination if provided
+            if (cursor) {
+                queryParams.push(Query.cursorAfter(cursor));
+            }
+            
             const productForCategories = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [
-                    Query.limit(70)
-                ]
+                queryParams
             );
-            // console.log(productForCategories);
             
-    
             const productdata = productForCategories.documents;
             
-    
+            // Get the last document ID for next page
+            const lastId = productdata.length > 0 ? productdata[productdata.length - 1].$id : null;
+            
             const productsWithImageLinks = await Promise.all(productdata.map(async product => {
                 const imageLinks = await Promise.all(product.images.map(imageId => this.getFile(imageId)));
                 return {
@@ -285,7 +466,7 @@ export class Config {
                     images: imageLinks
                 };
             }));
-
+    
             const productData = productsWithImageLinks.map((product) => ({
                 id: product.$id,
                 title: product.title,
@@ -300,14 +481,21 @@ export class Config {
                 productInfo: product.productInfo,
                 stockStatus: product.stockStatus
             }));
-            // console.log(productData);
-            return productData;
+            
+            // Return both the products and pagination info
+            return {
+                products: productData,
+                pagination: {
+                    hasMore: productdata.length === limit,
+                    nextCursor: lastId
+                }
+            };
     
         } catch (error) {
             console.log("Appwrite service :: getallProducts :: error", error);
             throw error;
         }
-    };
+    }
 
     async getAllCategories() {
         try {

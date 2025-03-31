@@ -6,7 +6,8 @@ const ProductCard = ( {
     title='Lorem ipsum dolor sit', 
     price=499, 
     image='https://images.pexels.com/photos/7276943/pexels-photo-7276943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    discountedPrice
+    discountedPrice,
+    stockStatus
   } ) => {
   return (
     <article className='pb-4 2xl:w-96 lg:w-72 md:w-60 sm:w-52 w-40'>
@@ -29,8 +30,12 @@ const ProductCard = ( {
             <p> ₹ {price} </p> 
           )
         }
-        {/* <p>₹ {price}</p> */}
-         {/* <s className='text-gray-600'>{Math.round(price * 1.1) }</s>  */}
+        
+        </div>
+        <div>
+          {
+            stockStatus === 'yes' ? <p className='text-green-800'> In-stock </p> : <p className='text-red-500'> Out of stock </p>
+          }
         </div>
     </div>
     </article>

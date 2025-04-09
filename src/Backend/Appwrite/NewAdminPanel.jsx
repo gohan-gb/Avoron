@@ -20,7 +20,7 @@ const AdminPanel = () => {
     setLoading(true);
     try {
       const response = await config.getallProducts();
-      setProducts(response);
+      setProducts(response.products);
     } catch (error) {
       console.error('Error fetching products:', error);
     }

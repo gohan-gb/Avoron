@@ -601,6 +601,43 @@ export class Config {
             throw error;
         }
     }
+
+    async deleteProduct(documentId) {
+        try {
+          // First, fetch the document to get the image IDs
+          const document = await this.databases.getDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            documentId
+          );
+      
+          // Delete the images from storage
+          if (document.images && document.images.length > 0) {
+            await Promise.all(
+              document.images.map(async (imageId) => {
+                try {
+                  await this.bucket.deleteFile(conf.appwriteBucketId, imageId);
+                } catch (error) {
+                  console.log(`Appwrite service :: deleteProduct :: image deletion error for ${imageId}`, error);
+                  // Continue with other image deletions even if one fails
+                }
+              })
+            );
+          }
+      
+          // Delete the document from the database
+          await this.databases.deleteDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            documentId
+          );
+      
+          console.log("Product and associated images deleted successfully");
+        } catch (error) {
+          console.log("Appwrite service :: deleteProduct :: error", error);
+          throw error;
+        }
+      }
     
 
 }

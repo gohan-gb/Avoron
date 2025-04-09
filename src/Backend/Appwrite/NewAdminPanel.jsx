@@ -19,7 +19,7 @@ const AdminPanel = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await config.getallProducts();
+      const response = await config.getallProducts(150);
       setProducts(response.products);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -28,12 +28,21 @@ const AdminPanel = () => {
   };
 
   const handleDelete = async (id) => {
+    console.log(id)
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
+        // Call the deleteProduct method from config
         await config.deleteProduct(id);
+        
+        // Refresh the products list after successful deletion
         await fetchProducts();
+        
+        // Optional: Add a toast or success message
+        // You could use a toast library or set a state to show a success message
+        console.log('Product deleted successfully');
       } catch (error) {
         console.error('Error deleting product:', error);
+        console.error('Detailed error:', error.message);
       }
     }
   };
@@ -144,7 +153,7 @@ const AdminPanel = () => {
                         <Edit size={18} />
                       </button>
                       <button
-                        onClick={() => handleDelete(product.$id)}
+                        onClick={() => handleDelete(product.id)}
                         className="text-red-600 hover:text-red-900 px-2"
                       >
                         <Trash2 size={18} />
